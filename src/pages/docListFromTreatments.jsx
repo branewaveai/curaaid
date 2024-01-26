@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import DoctorCard from "./DoctorCard";
+import { useEffect, useState } from "react";
 
 const DocListFromTreatments = ({ treatmentId }) => {
   const [doctors, setDoctors] = useState([]);
@@ -19,12 +18,12 @@ const DocListFromTreatments = ({ treatmentId }) => {
   }, [treatmentId]);
 
   return (
-    <div>
+    <>
       {" "}
       {doctors.map((doctor) => (
         <DoctorCard key={doctor.id} doctor={doctor} />
       ))}{" "}
-    </div>
+    </>
   );
 };
 

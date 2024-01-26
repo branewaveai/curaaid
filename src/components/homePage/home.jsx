@@ -25,10 +25,10 @@ const Home = () => {
     <div>
       <h1> Welcome to CuraAid </h1>{" "}
       {/* <DoctorCard
-                        image="../assets/images/doctor1.jpg"
-                        name="Anant"
-                        phone="9759948777"
-                      /> */}{" "}
+                                    image="../assets/images/doctor1.jpg"
+                                    name="Anant"
+                                    phone="9759948777"
+                                  /> */}{" "}
       <h2> Top Doctors </h2> <HorizontalScrollableDoctorList />
       <h2> Top Hospitals </h2> <HospiList hospitals={hospitals} />{" "}
     </div>
