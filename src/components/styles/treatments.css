@@ -1,0 +1,32 @@
+/* App.css */
+
+.horizontal-scrollable-list {
+  display: flex;
+  overflow-x: auto;
+  padding: 20px;
+}
+
+.treatment-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.treatment-info {
+  padding: 15px;
+}
+
+h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.treatment-card-bottom {
+  margin-top: 0;
+  width: 73%
+}
