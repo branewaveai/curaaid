@@ -8,12 +8,32 @@ import {
     Select,
     TextField,
     Typography,
-} from '@material-ui/core';
+} from '@mui/material';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import dayjs from 'dayjs';
+import 'dayjs/locale/en';
 import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+dayjs.locale('en');
+
+// Example available dates (replace with your actual available dates)
+const availableDates = [
+  dayjs('2024-01-27'),
+  dayjs('2024-01-28'),
+  dayjs('2024-01-29'),
+  // Add more dates as needed
+];
+
+const timeSlots = ['10:00 AM', '11:00 AM', '2:00 PM', '3:00 PM'];
 
 const AppointmentForm = () => {
+    const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -24,24 +44,41 @@ const AppointmentForm = () => {
     selectedTimeSlot: '',
   });
 
-  // Example time slots (replace with your actual time slots)
-  const timeSlots = ['10:00 AM', '11:00 AM', '2:00 PM', '3:00 PM'];
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add logic to handle form submission (e.g., sending data to the server).
     console.log('Form submitted:', formData);
+    toast.success('Thanks for booking appointment! We\'ll contact you soon.', {
+        position: 'top-center',
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
+    navigate('/home');
+    // Add logic to handle form submission (e.g., sending data to the server).
+  };
+
+  const shouldDisableDate = (date) => {
+    return !availableDates.some((availableDate) => date.isSame(availableDate, 'day'));
+  };
+
+  const handleDateChange = (date) => {
+    setFormData({ ...formData, selectedDate: date, selectedTimeSlot: '' });
+  };
+
+  const handleTimeSlotChange = (e) => {
+    setFormData({ ...formData, selectedTimeSlot: e.target.value });
   };
 
   return (
-    <Paper elevation={3} style={{ padding: 20, maxWidth: 400, margin: 'auto', marginTop: 50 }}>
+    <Paper elevation={3} style={{ padding: 20, maxWidth: 800, margin: 'auto', marginTop: 50 }}>
       <Typography variant="h5" gutterBottom>
         Appointment Form
       </Typography>
 
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               fullWidth
               label="First Name"
@@ -49,7 +86,7 @@ const AppointmentForm = () => {
               onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               fullWidth
               label="Last Name"
@@ -57,7 +94,7 @@ const AppointmentForm = () => {
               onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               fullWidth
               label="Country"
@@ -65,7 +102,7 @@ const AppointmentForm = () => {
               onChange={(e) => setFormData({ ...formData, country: e.target.value })}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               fullWidth
               label="Contact Number"
@@ -82,19 +119,32 @@ const AppointmentForm = () => {
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             />
           </Grid>
-          <Grid item xs={12}>
-            <DatePicker
-              selected={formData.selectedDate}
-              onChange={(date) => setFormData({ ...formData, selectedDate: date })}
-              dateFormat="dd/MM/yyyy"
-            />
+          <Grid item xs={12} sm={6}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DateCalendar
+                onChange={handleDateChange}
+                renderInput={(startProps, endProps) => (
+                  <>
+                    <TextField
+                      {...startProps}
+                      fullWidth
+                      label="Select Date"
+                      variant="standard"
+                      error={!formData.selectedDate}
+                    />
+                  </>
+                )}
+                shouldDisableDate={shouldDisableDate}
+              />
+            </LocalizationProvider>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <InputLabel>Time Slot</InputLabel>
               <Select
                 value={formData.selectedTimeSlot}
-                onChange={(e) => setFormData({ ...formData, selectedTimeSlot: e.target.value })}
+                onChange={handleTimeSlotChange}
+                disabled={!formData.selectedDate}
               >
                 <MenuItem value="" disabled>
                   Select a time slot
@@ -113,6 +163,8 @@ const AppointmentForm = () => {
           Submit
         </Button>
       </form>
+    
+
     </Paper>
   );
 };
