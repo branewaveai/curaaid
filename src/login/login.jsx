@@ -1,99 +1,97 @@
-// LoginDialog.js
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import TextField from '@mui/material/TextField';
 import React, { useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
-const LoginDialog = ({ onClose }) => {
+const LoginDialog = ({ isOpen, onClose, onLogin }) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [otp, setOtp] = useState('');
   const [isOtpSent, setIsOtpSent] = useState(false);
+  const [isSendButtonDisabled, setIsSendButtonDisabled] = useState(false);
+  const [secondsRemaining, setSecondsRemaining] = useState(30);
 
   const handleSendOtp = () => {
-    // Check if the user exists (you may want to implement an API call here)
-    const userExists = checkIfUserExists();
+    setIsOtpSent(true);
+    setIsSendButtonDisabled(true);
+    startCountdown();
+  };
 
-    if (userExists) {
-      // For simplicity, let's consider OTP is sent successfully
-      setIsOtpSent(true);
-    } else {
-      // Show toast for user not found
-      toast.error('User not found. Would you like to register?', {
-        // Add registration option in the toast
-        toastId: 'custom-toast',
-        position: 'top-center',
-        autoClose: false,
-        closeOnClick: false,
-        onClose: () => {}, // Prevent auto-close on click
-        render: ({ closeToast }) => (
-          <div>
-            <p>User not found. Would you like to register?</p>
-            <button onClick={() => handleRegister(closeToast)}>
-              Register Now
-            </button>
-          </div>
-        ),
-      });
+  const startCountdown = () => {
+    let seconds = 30;
 
-      // You can redirect to the registration page or provide a registration option here
-      // For simplicity, let's reset the phone number
-      setPhoneNumber('');
-    }
+    const countdownInterval = setInterval(() => {
+      setSecondsRemaining((prevSeconds) => prevSeconds - 1);
+
+      if (seconds === 0) {
+        clearInterval(countdownInterval);
+        setIsSendButtonDisabled(false);
+        setSecondsRemaining(30);
+      }
+    }, 1000);
   };
 
   const handleLogin = () => {
-    // Perform login logic (you may want to implement an API call here)
-
-    // For simplicity, let's consider the login is successful
-    alert('Login successful!');
-
-    // Close the login dialog
+    onLogin();
     onClose();
   };
 
-  const handleRegister = (closeToast) => {
-    // Perform registration logic
-    // For simplicity, you can navigate to the registration page using react-router Link
-    closeToast(); // Close the toast
-
-    // You can redirect to the registration page or provide a registration option here
-    // For simplicity, let's navigate to the registration page using react-router
-    // Make sure to add a route for the registration page in your router configuration
-    // (e.g., <Route path="/register" element={<Register />} />)
-    window.location.href = '/register'; // Redirect to the registration page
-  };
-
-  const checkIfUserExists = () => {
-    // Implement your logic to check if the user exists (you may want to use an API call)
-    // For simplicity, let's consider a hardcoded user
-    const registeredUsers = ['1234567890']; // Sample registered phone numbers
-    return registeredUsers.includes(phoneNumber);
-  };
-
   return (
-    <div>
-      <h2>Login</h2>
-      <label>Phone Number:</label>
-      <input
-        type="tel"
-        value={phoneNumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
-      />
-      <button onClick={handleSendOtp}>Send OTP</button>
+    <Dialog open={isOpen} onClose={onClose}>
+      <DialogTitle sx={{ backgroundColor: '#f0f8ff', color: 'black' }}>Login</DialogTitle>
+      <DialogContent sx={{ backgroundColor: '#f0f8ff', padding: '16px' }}>
+        <TextField
+          label="Phone Number"
+          type="tel"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          fullWidth
+          margin="normal"
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleSendOtp}
+          disabled={isSendButtonDisabled}
+          sx={{ mt: 2, backgroundColor: 'darkgreen', color: 'white' }}
+        >
+          {isSendButtonDisabled
+            ? `Resend OTP in ${secondsRemaining} seconds`
+            : 'Send OTP'}
+        </Button>
 
-      {isOtpSent && (
-        <>
-          <label>Enter OTP:</label>
-          <input
-            type="text"
-            value={otp}
-            onChange={(e) => setOtp(e.target.value)}
-          />
-          <button onClick={handleLogin}>Login</button>
-        </>
-      )}
+        {isOtpSent && (
+          <>
+            <TextField
+              label="Enter OTP"
+              type="text"
+              value={otp}
+              onChange={(e) => setOtp(e.target.value)}
+              fullWidth
+              margin="normal"
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleLogin}
+              sx={{ mt: 2, backgroundColor: 'darkgreen', color: 'white' }}
+            >
+              Login
+            </Button>
+          </>
+        )}
 
-      <ToastContainer position="top-center" autoClose={5000} />
-    </div>
+        {/* Link to Register */}
+        <p>
+          Don't have an account?{' '}
+          <Link to="/signup" onClick={onClose} style={{ color: 'darkgreen' }}>
+            Register here
+          </Link>
+        </p>
+      </DialogContent>
+    </Dialog>
   );
 };
 
