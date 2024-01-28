@@ -1,5 +1,47 @@
+/* home.css */
 
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #a8b8c8;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Align items to the start (left) */
+}
+
+h1,
 h2 {
-  padding-left: 20px;
-  /* margin-left: 20px; */
+    text-align: left;
+    /* Align text to the left */
+    color: #3184de;
+    /* Set color to a nice blue, you can adjust this */
+}
+
+.additional-element {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #d1ecf1;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* Additional styles for Typography component */
+
+.Typography {
+    font-family: "Roboto", sans-serif;
+    /* You can replace this with the desired font */
+    font-size: 24px;
+    color: #333;
+    /* Set color to a dark shade */
 }

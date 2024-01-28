@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import DoctorCard from "../components/hospital/doctorCard";
 import "../components/styles/doctorCard.css"; // Make sure to import your CSS file
 
@@ -15,117 +15,117 @@ const HorizontalScrollableDoctorList = () => {
       location: "Bangalore",
     },
     {
-      doctorId: 1,
-      name: "Dr. John Doe",
-      phoneNumber: "123-456-7890",
-      image:
-        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
-      exp: 45,
-      degree: "MBBS, DM - Cardiology",
-      location: "Bangalore",
-    },
-    {
-      doctorId: 1,
-      name: "Dr. John Doe",
-      phoneNumber: "123-456-7890",
-      image:
-        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
-      exp: 45,
-      degree: "MBBS, DM - Cardiology",
-      location: "Bangalore",
-    },
-    {
-      doctorId: 1,
-      name: "Dr. John Doe",
-      phoneNumber: "123-456-7890",
-      image:
-        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
-      exp: 45,
-      degree: "MBBS, DM - Cardiology",
-      location: "Bangalore",
-    },
-    {
-      doctorId: 1,
-      name: "Dr. John Doe",
-      phoneNumber: "123-456-7890",
-      image:
-        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
-      exp: 45,
-      degree: "MBBS, DM - Cardiology",
-      location: "Bangalore",
-    },
-    {
-      doctorId: 1,
-      name: "Dr. John Doe",
-      phoneNumber: "123-456-7890",
-      image:
-        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
-      exp: 45,
-      degree: "MBBS, DM - Cardiology",
-      location: "Bangalore",
-    },
-    {
-      doctorId: 1,
-      name: "Dr. John Doe",
-      phoneNumber: "123-456-7890",
-      image:
-        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
-      exp: 45,
-      degree: "MBBS, DM - Cardiology",
-      location: "Bangalore",
-    },
-    {
-      doctorId: 1,
-      name: "Dr. John Doe",
-      phoneNumber: "123-456-7890",
-      image:
-        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
-      exp: 45,
-      degree: "MBBS, DM - Cardiology",
-      location: "Bangalore",
-    },
-    {
-      doctorId: 1,
-      name: "Dr. John Doe",
-      phoneNumber: "123-456-7890",
-      image:
-        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
-      exp: 45,
-      degree: "MBBS, DM - Cardiology",
-      location: "Bangalore",
-    },
-    {
-      doctorId: 1,
-      name: "Dr. John Doe",
-      phoneNumber: "123-456-7890",
-      image:
-        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
-      exp: 45,
-      degree: "MBBS, DM - Cardiology",
-      location: "Bangalore",
-    },
-    {
-      doctorId: 1,
-      name: "Dr. John Doe",
-      phoneNumber: "123-456-7890",
-      image:
-        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
-      exp: 45,
-      degree: "MBBS, DM - Cardiology",
-      location: "Bangalore",
-    },
-    {
-      doctorId: 1,
-      name: "Dr. John Doe",
-      phoneNumber: "123-456-7890",
-      image:
-        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
-      exp: 45,
-      degree: "MBBS, DM - Cardiology",
-      location: "Bangalore",
-    },
-    {
       doctorId: 2,
+      name: "Dr. John Doe",
+      phoneNumber: "123-456-7890",
+      image:
+        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
+      exp: 45,
+      degree: "MBBS, DM - Cardiology",
+      location: "Bangalore",
+    },
+    {
+      doctorId: 3,
+      name: "Dr. John Doe",
+      phoneNumber: "123-456-7890",
+      image:
+        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
+      exp: 45,
+      degree: "MBBS, DM - Cardiology",
+      location: "Bangalore",
+    },
+    {
+      doctorId: 4,
+      name: "Dr. John Doe",
+      phoneNumber: "123-456-7890",
+      image:
+        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
+      exp: 45,
+      degree: "MBBS, DM - Cardiology",
+      location: "Bangalore",
+    },
+    {
+      doctorId: 5,
+      name: "Dr. John Doe",
+      phoneNumber: "123-456-7890",
+      image:
+        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
+      exp: 45,
+      degree: "MBBS, DM - Cardiology",
+      location: "Bangalore",
+    },
+    {
+      doctorId: 6,
+      name: "Dr. John Doe",
+      phoneNumber: "123-456-7890",
+      image:
+        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
+      exp: 45,
+      degree: "MBBS, DM - Cardiology",
+      location: "Bangalore",
+    },
+    {
+      doctorId: 7,
+      name: "Dr. John Doe",
+      phoneNumber: "123-456-7890",
+      image:
+        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
+      exp: 45,
+      degree: "MBBS, DM - Cardiology",
+      location: "Bangalore",
+    },
+    {
+      doctorId: 8,
+      name: "Dr. John Doe",
+      phoneNumber: "123-456-7890",
+      image:
+        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
+      exp: 45,
+      degree: "MBBS, DM - Cardiology",
+      location: "Bangalore",
+    },
+    {
+      doctorId: 9,
+      name: "Dr. John Doe",
+      phoneNumber: "123-456-7890",
+      image:
+        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
+      exp: 45,
+      degree: "MBBS, DM - Cardiology",
+      location: "Bangalore",
+    },
+    {
+      doctorId: 10,
+      name: "Dr. John Doe",
+      phoneNumber: "123-456-7890",
+      image:
+        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
+      exp: 45,
+      degree: "MBBS, DM - Cardiology",
+      location: "Bangalore",
+    },
+    {
+      doctorId: 11,
+      name: "Dr. John Doe",
+      phoneNumber: "123-456-7890",
+      image:
+        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
+      exp: 45,
+      degree: "MBBS, DM - Cardiology",
+      location: "Bangalore",
+    },
+    {
+      doctorId: 12,
+      name: "Dr. John Doe",
+      phoneNumber: "123-456-7890",
+      image:
+        "https://s3-ap-south-1.amazonaws.com/images.hospals.com/uploads/images/img_635cbd759383c1667022197.png",
+      exp: 45,
+      degree: "MBBS, DM - Cardiology",
+      location: "Bangalore",
+    },
+    {
+      doctorId: 13,
       name: "Dr. Jane Smith",
       phoneNumber: "987-654-3210",
       image:
@@ -135,7 +135,7 @@ const HorizontalScrollableDoctorList = () => {
       location: "Delhi",
     },
     {
-      doctorId: 2,
+      doctorId: 14,
       name: "Dr. Jane Smith",
       phoneNumber: "987-654-3210",
       image:
@@ -145,7 +145,7 @@ const HorizontalScrollableDoctorList = () => {
       location: "Delhi",
     },
     {
-      doctorId: 2,
+      doctorId: 15,
       name: "Dr. Jane Smith",
       phoneNumber: "987-654-3210",
       image:
@@ -155,7 +155,7 @@ const HorizontalScrollableDoctorList = () => {
       location: "Delhi",
     },
     {
-      doctorId: 2,
+      doctorId: 16,
       name: "Dr. Jane Smith",
       phoneNumber: "987-654-3210",
       image:
@@ -165,7 +165,7 @@ const HorizontalScrollableDoctorList = () => {
       location: "Delhi",
     },
     {
-      doctorId: 2,
+      doctorId: 17,
       name: "Dr. Jane Smith",
       phoneNumber: "987-654-3210",
       image:
@@ -175,7 +175,7 @@ const HorizontalScrollableDoctorList = () => {
       location: "Delhi",
     },
     {
-      doctorId: 2,
+      doctorId: 18,
       name: "Dr. Jane Smith",
       phoneNumber: "987-654-3210",
       image:
@@ -185,7 +185,7 @@ const HorizontalScrollableDoctorList = () => {
       location: "Delhi",
     },
     {
-      doctorId: 2,
+      doctorId: 19,
       name: "Dr. Jane Smith",
       phoneNumber: "987-654-3210",
       image:
@@ -193,12 +193,24 @@ const HorizontalScrollableDoctorList = () => {
       exp: 18,
       degree: "MBBS, MD",
       location: "Delhi",
-    }, // Add more doctors as needed
+    },
   ];
-
-  const itemsPerPage = 10;
+  const itemsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [currentDoctors, setCurrentDoctors] = useState([]);
+  const [columns, setColumns] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
+  const calculateColumns = useCallback(() => {
+    if (windowWidth >= 1200) {
+      return 4;
+    } else if (windowWidth >= 768 && windowWidth < 1200) {
+      return 2;
+    } else {
+      return 1;
+    }
+  }, [windowWidth]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -212,19 +224,19 @@ const HorizontalScrollableDoctorList = () => {
     };
   }, []);
 
-  const calculateColumns = () => {
-    if (windowWidth >= 1200) {
-      return 5;
-    } else if (windowWidth >= 768 && windowWidth < 1200) {
-      return 3;
-    } else {
-      return 1;
-    }
-  };
+  useEffect(() => {
+    const newColumns = calculateColumns();
+    setColumns(newColumns);
 
-  const columns = calculateColumns();
-  const totalItems = doctors.length;
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const newTotalPages = Math.ceil(doctors.length / itemsPerPage);
+    setTotalPages(newTotalPages);
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const doctorsToDisplay = doctors.slice(indexOfFirstItem, indexOfLastItem);
+    console.log(indexOfFirstItem + " " + indexOfLastItem);
+    setCurrentDoctors(doctorsToDisplay);
+  }, [currentPage, itemsPerPage, calculateColumns]);
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
@@ -242,10 +254,6 @@ const HorizontalScrollableDoctorList = () => {
     }
   };
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentDoctors = doctors.slice(indexOfFirstItem, indexOfLastItem);
-
   return (
     <div className="horizontal-scrollable-list">
       <div
@@ -253,15 +261,20 @@ const HorizontalScrollableDoctorList = () => {
         style={{
           display: "grid",
           gridTemplateColumns: `repeat(${columns}, 1fr)`,
-          gap: "16px",
-        }}
+          gap: "0px", // Adjust the gap between cards
+          justifyContent: "center", // Center the cards
+          
+        }
+      }
       >
         {currentDoctors.map((doctor) => (
           <DoctorCard key={doctor.doctorId} {...doctor} />
         ))}
       </div>
       <div className="pagination">
-        <button onClick={handlePrevPage}>&lt; Prev</button>
+        <button onClick={handlePrevPage} disabled={currentPage === 1}>
+          &lt; Prev
+        </button>
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index + 1}
@@ -271,7 +284,9 @@ const HorizontalScrollableDoctorList = () => {
             {index + 1}
           </button>
         ))}
-        <button onClick={handleNextPage}>Next &gt;</button>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          Next &gt;
+        </button>
       </div>
     </div>
   );
