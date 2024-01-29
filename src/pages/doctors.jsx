@@ -261,33 +261,31 @@ const HorizontalScrollableDoctorList = () => {
         style={{
           display: "grid",
           gridTemplateColumns: `repeat(${columns}, 1fr)`,
-          gap: "0px", // Adjust the gap between cards
+          gap: "10px", // Adjust the gap between cards
           justifyContent: "center", // Center the cards
-          
-        }
-      }
+        }}
       >
         {currentDoctors.map((doctor) => (
           <DoctorCard key={doctor.doctorId} {...doctor} />
-        ))}
-      </div>
+        ))}{" "}
+      </div>{" "}
       <div className="pagination">
         <button onClick={handlePrevPage} disabled={currentPage === 1}>
-          &lt; Prev
-        </button>
+          &lt; Prev{" "}
+        </button>{" "}
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index + 1}
             onClick={() => handlePageChange(index + 1)}
             className={currentPage === index + 1 ? "active" : ""}
           >
-            {index + 1}
+            {index + 1}{" "}
           </button>
-        ))}
+        ))}{" "}
         <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-          Next &gt;
-        </button>
-      </div>
+          Next &gt;{" "}
+        </button>{" "}
+      </div>{" "}
     </div>
   );
 };
