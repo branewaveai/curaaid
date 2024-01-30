@@ -2,7 +2,7 @@ import { CONST_KEYS, LOGIN_CHK } from "../../src/config";
 
 
 export const isAuthed = () =>{
-    let token = getToken(CONST_KEYS.token)
+    let token = getItem(CONST_KEYS.token)
     if(!token){
         return false;
     }

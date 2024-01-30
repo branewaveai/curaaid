@@ -1,10 +1,4 @@
-import React from "react";
-import {
-  Navigate,
-  Route,
-  BrowserRouter as Router,
-  Routes,
-} from "react-router-dom";
+import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar/nav";
 import Home from "./components/homePage/home";
 import Login from "./login/login";
@@ -34,10 +28,12 @@ function App() {
         <Route path="/doctors" element={<Doctors />} />{" "}
         <Route path="/blogs" element={<Blogs />} />{" "}
         <Route path="/login" element={<Login />} />{" "}
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/doctors/:doctorId/appointments" element={<DoctorAppointments />} />
-        <Route path="/appointments" element={<DoctorAppointments />}
-        />
+        <Route path="/signup" element={<SignUp />} />{" "}
+        <Route
+          path="/doctors/:doctorId/appointments"
+          element={<DoctorAppointments />}
+        />{" "}
+        <Route path="/appointments" element={<DoctorAppointments />} />{" "}
         {/* Protected Routes */}{" "}
         <Route
           path="/dashboard"

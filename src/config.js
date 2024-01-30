@@ -8,7 +8,7 @@ export const LOGIN_CHK = {
     isLoggedIn: false
 }
 
-export const CONST_KEY = {
+export const CONST_KEYS = {
     token: 'token',
     user: 'user'
 }
