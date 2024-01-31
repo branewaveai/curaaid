@@ -1,11 +1,11 @@
 // Navbar.js
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import logo from '../../assets/icons/Logo.jpeg';
-import LoginDialog from '../../login/login'; // Update the path based on your project structure
-import styles from './navStyles.module.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import logo from "../../assets/icons/Logo.jpeg";
+import LoginDialog from "../../login/login"; // Update the path based on your project structure
+import styles from "./navStyles.module.css";
 
 function Navbar() {
   const [isActive, setIsActive] = useState(false);
@@ -32,7 +32,7 @@ function Navbar() {
     // ...
 
     // For simplicity, let's consider the login is successful
-    toast.success('Login successful!');
+    toast.success("Login successful!");
     closeLoginDialog();
   };
 
@@ -43,56 +43,56 @@ function Navbar() {
           <Link to="/" className={`${styles.logo}`}>
             <img src={logo} alt="Logo" />
           </Link>
-
-          <ul className={`${styles.navMenu} ${isActive ? styles.active : ''}`}>
+          <ul className={`${styles.navMenu} ${isActive ? styles.active : ""}`}>
             <li onClick={removeActive}>
               <Link to="/home" className={`${styles.navLink}`}>
-                Home
-              </Link>
-            </li>
+                Home{" "}
+              </Link>{" "}
+            </li>{" "}
             <li onClick={removeActive}>
               <Link to="/treatments" className={`${styles.navLink}`}>
-                Treatments
-              </Link>
-            </li>
+                Treatments{" "}
+              </Link>{" "}
+            </li>{" "}
             <li onClick={removeActive}>
               <Link to="/hospitals" className={`${styles.navLink}`}>
-                Hospitals
-              </Link>
-            </li>
+                Hospitals{" "}
+              </Link>{" "}
+            </li>{" "}
             <li onClick={removeActive}>
               <Link to="/doctors" className={`${styles.navLink}`}>
-                Doctors
-              </Link>
-            </li>
+                Doctors{" "}
+              </Link>{" "}
+            </li>{" "}
             <li onClick={removeActive}>
               <Link to="/blogs" className={`${styles.navLink}`}>
-                Blogs
-              </Link>
-            </li>
-            {/* Other menu items */}
+                Blogs{" "}
+              </Link>{" "}
+            </li>{" "}
+            {/* Other menu items */}{" "}
             <li onClick={openLoginDialog} className={`${styles.navLink}`}>
-              Login
-            </li>
+              Login{" "}
+            </li>{" "}
           </ul>
-
           <div
-            className={`${styles.hamburger} ${isActive ? styles.active : ''}`}
+            className={`${styles.hamburger} ${isActive ? styles.active : ""}`}
             onClick={toggleActiveClass}
           >
-            <span className={`${styles.bar}`}></span>
-            <span className={`${styles.bar}`}></span>
-            <span className={`${styles.bar}`}></span>
-          </div>
-        </nav>
+            <span className={`${styles.bar}`}> </span>{" "}
+            <span className={`${styles.bar}`}> </span>{" "}
+            <span className={`${styles.bar}`}> </span>{" "}
+          </div>{" "}
+        </nav>{" "}
       </header>
-
-      {/* Add the LoginDialog */}
+      {/* Add the LoginDialog */}{" "}
       {isLoginDialogOpen && (
-        <LoginDialog isOpen={isLoginDialogOpen} onClose={closeLoginDialog} onLogin={handleLogin} />
+        <LoginDialog
+          isOpen={isLoginDialogOpen}
+          onClose={closeLoginDialog}
+          onLogin={handleLogin}
+        />
       )}
-
-      <ToastContainer position="top-center" autoClose={5000} />
+      <ToastContainer position="top-center" autoClose={5000} />{" "}
     </div>
   );
 }

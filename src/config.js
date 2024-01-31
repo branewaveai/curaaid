@@ -1,8 +1,18 @@
-Base_url = "https://curaaid.connect.com/"
+export const Base_url = "https://curaaid.connect.com/"
 
-LoginUser = "/login";
+export const LoginUser = "/login";
 
-SignUpUser = "/signup";
+export const SignUpUser = "/signup";
 
+export const LOGIN_CHK = {
+    isLoggedIn: false
+}
 
-"hell0"
+export const CONST_KEYS = {
+    token: 'token',
+    user: 'user'
+}
+
+export const JSON_EXCEL_DATA = {
+    jsondata: {}
+}
