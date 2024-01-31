@@ -34,6 +34,7 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
     const countdownInterval = setInterval(() => {
       setSecondsRemaining((prevSeconds) => prevSeconds - 1);
 
+      
       if (seconds === 0) {
         clearInterval(countdownInterval);
         setIsSendButtonDisabled(false);
