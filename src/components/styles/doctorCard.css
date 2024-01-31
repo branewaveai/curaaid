@@ -3,7 +3,7 @@
     justify-content: space-between;
     /* Distribute space evenly between items */
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
     background-color: #f8f9fa;
     padding: 20px;
 }
