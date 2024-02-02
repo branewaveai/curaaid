@@ -10,7 +10,9 @@ import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { doPostRequest } from "../Request";
 import { clearSession, getItem, setItem } from "../Utils/utils"; // Import your storage utils here
+import { LoginUser } from "../config";
 
 const LoginDialog = ({ isOpen, onClose, onLogin }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -21,6 +23,7 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
   const [isLoading, setLoading] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null); // For menu anchor element
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(!!getItem("userName"));
 
   const handleSendOtp = () => {
     setIsOtpSent(true);
@@ -34,13 +37,13 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
     const countdownInterval = setInterval(() => {
       setSecondsRemaining((prevSeconds) => prevSeconds - 1);
 
-      
+
       if (seconds === 0) {
         clearInterval(countdownInterval);
         setIsSendButtonDisabled(false);
         setSecondsRemaining(30);
       }
-    }, 1000);
+    }, 3000);
   };
 
   const handleLogin = () => {
@@ -68,11 +71,60 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
       });
       return;
     }
-    // Simulating a successful login for the example
-    // In a real-world scenario, you would handle authentication and session management here
-    const userName = "John Doe"; // Replace with the actual user name
+    const userName = "John Doe";
     setItem("userName", userName);
-    onLogin();
+    setIsLoggedIn(!!getItem("userName"));
+    setLoading(true);
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type","application/json");
+    var reqJson = {
+      method: "POST",
+      headers: myHeaders,
+      body: JSON.stringify({
+        contactNumber: phoneNumber,
+        // key2: "value2",
+      }),
+    }
+
+    doPostRequest(
+      LoginUser, reqJson,
+      (resp)=>{
+        var loginResp = JSON.parse(resp);
+        if(loginResp.status==='SUCCESS'){
+          console.log("Logedin Succesfully");
+
+
+          //sendOtpForverification(); we will call here for sending otp;
+        }
+        else{
+          toast.error("Login Failed",{
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar:false,
+            closeOnClick: true,
+            pauseOnHover:true,
+            draggable:true,
+            progress: undefined,
+            theme: "light",
+          })
+          setLoading(false)
+        }
+      },
+      (err)=>{
+        setLoading(false);
+        toast.error("Failed",{
+          position:"top-right",
+          autoClose: 3000,
+            hideProgressBar:false,
+            closeOnClick: true,
+            pauseOnHover:true,
+            draggable:true,
+            progress: undefined,
+            theme: "light",
+        })
+      }
+    )
+    // onLogin();
     onClose();
   };
 
@@ -99,7 +151,7 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
   return (
     <>
       {/* Person icon and user name or login button */}
-      {getItem("userName") ? (
+      {isLoggedIn ? (
         <IconButton
           onClick={handleMenuOpen}
           color="inherit"

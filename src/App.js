@@ -1,3 +1,4 @@
+import React from "react";
 import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar/nav";
 import Home from "./components/homePage/home";
@@ -12,7 +13,12 @@ import SignUp from "./signup/signup";
 
 const ProtectedRoute = ({ element }) => {
   // If user is authenticated, render the protected element, else redirect to login
-  return localStorage.getItem("token") ? element : <Navigate to="/login" />;
+  const authToken = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("authToken="))
+    ?.split("=")[1];
+
+  return authToken ? element : <Navigate to="/login" />;
 };
 
 function App() {
@@ -20,26 +26,27 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        {" "}
-        {/* Public Routes */} <Route path="/" element={<Home />} />{" "}
-        <Route path="/home" element={<Home />} />{" "}
-        <Route path="/treatments" element={<Treatments />} />{" "}
-        <Route path="/hospitals" element={<Hospitals />} />{" "}
-        <Route path="/doctors" element={<Doctors />} />{" "}
-        <Route path="/blogs" element={<Blogs />} />{" "}
-        <Route path="/login" element={<Login />} />{" "}
-        <Route path="/signup" element={<SignUp />} />{" "}
+        {/* Public Routes */}
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/treatments" element={<Treatments />} />
+        <Route path="/hospitals" element={<Hospitals />} />
+        <Route path="/doctors" element={<Doctors />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route
           path="/doctors/:doctorId/appointments"
           element={<DoctorAppointments />}
-        />{" "}
-        <Route path="/appointments" element={<DoctorAppointments />} />{" "}
-        {/* Protected Routes */}{" "}
+        />
+        <Route path="/appointments" element={<DoctorAppointments />} />
+
+        {/* Protected Routes */}
         <Route
           path="/dashboard"
           element={<ProtectedRoute element={<Dashboard />} />}
         />
-      </Routes>{" "}
+      </Routes>
     </Router>
   );
 }
