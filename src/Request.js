@@ -1,8 +1,8 @@
-export const doPostRequest = (path,regOptions,successfullCallback,failureCallback)=>{
+export const doPostRequest = (path,reqOptions,successfullCallback,failureCallback)=>{
     const url = path
 
 
-    fetch(url,regOptions)
+    fetch(url,reqOptions)
     .then(response => response.json())
     .then (result => {
         if(successfullCallback){
