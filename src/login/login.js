@@ -1,50 +1,63 @@
+// src/components/LoginDialog.js
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { doPostRequest } from "../Request";
-import { clearSession, getItem, setItem } from "../Utils/utils"; // Import your storage utils here
+import { setItem } from "../Utils/utils";
+import {
+  setIsLoggedIn,
+  setIsOtpSent,
+  setIsSendButtonDisabled,
+  setLoading,
+  setOtp,
+  setPhoneNumber,
+  setSecondsRemaining,
+} from "../actions/loginActions";
 import { LoginUser } from "../config";
+const LoginDialog = (props) => {
+  const {
+    login,
+    setPhoneNumber,
+    setOtp,
+    setIsOtpSent,
+    setIsSendButtonDisabled,
+    setSecondsRemaining,
+    setLoading,
+    setIsLoggedIn,
+  } = props;
 
-const LoginDialog = ({ isOpen, onClose, onLogin }) => {
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [otp, setOtp] = useState("");
-  const [isOtpSent, setIsOtpSent] = useState(false);
-  const [isSendButtonDisabled, setIsSendButtonDisabled] = useState(false);
-  const [secondsRemaining, setSecondsRemaining] = useState(30);
-  const [isLoading, setLoading] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null); // For menu anchor element
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(!!getItem("userName"));
-
-  const handleSendOtp = () => {
-    setIsOtpSent(true);
-    setIsSendButtonDisabled(true);
-    startCountdown();
-  };
-
   const startCountdown = () => {
     let seconds = 30;
 
     const countdownInterval = setInterval(() => {
       setSecondsRemaining((prevSeconds) => prevSeconds - 1);
 
-
       if (seconds === 0) {
         clearInterval(countdownInterval);
         setIsSendButtonDisabled(false);
         setSecondsRemaining(30);
       }
-    }, 3000);
+    }, 1000);
+  };
+
+  const handleSendOtp = () => {
+    setIsOtpSent(true);
+    setIsSendButtonDisabled(true);
+    startCountdown();
+
+    // ... (your existing logic for sending OTP)
   };
 
   const handleLogin = () => {
-    if (!phoneNumber) {
-      toast.error("please enter phoneNumber", {
+    if (!login.phoneNumber || !login.otp) {
+      toast.error("Please enter both phone number and OTP.", {
         position: "top-right",
         autoClose: 3000,
         closeOnClick: true,
@@ -55,156 +68,151 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
       });
       return;
     }
-    if (!otp) {
-      toast.error("please enter otp", {
-        position: "top-right",
-        autoClose: 3000,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "Light",
-      });
-      return;
-    }
-    const userName = "John Doe";
-    setItem("userName", userName);
-    setIsLoggedIn(!!getItem("userName"));
+
     setLoading(true);
+
     var myHeaders = new Headers();
-    myHeaders.append("Content-Type","application/json");
+    myHeaders.append("Content-Type", "application/json");
     var reqJson = {
       method: "POST",
       headers: myHeaders,
       body: JSON.stringify({
-        contactNumber: phoneNumber,
-        // key2: "value2",
+        contactNumber: login.phoneNumber,
+        otp: login.otp,
       }),
-    }
+    };
 
+    // Make the login API call
     doPostRequest(
-      LoginUser, reqJson,
-      (resp)=>{
+      LoginUser,
+      reqJson,
+      (resp) => {
         var loginResp = JSON.parse(resp);
-        if(loginResp.status==='SUCCESS'){
-          console.log("Logedin Succesfully");
+        if (loginResp.status === "SUCCESS") {
+          console.log("Logged in Successfully");
 
+          // Update the login status in Redux
+          setIsLoggedIn(true);
 
-          //sendOtpForverification(); we will call here for sending otp;
-          navigate("/dashboaard");
-        }
-        else{
-          toast.error("Login Failed",{
+          // Optionally, you can set user details in storage
+          const userName = "John Doe";
+          setItem("userName", userName);
+
+          // Redirect to the dashboard
+          navigate("/dashboard");
+        } else {
+          toast.error("Login Failed", {
             position: "top-right",
             autoClose: 3000,
-            hideProgressBar:false,
+            hideProgressBar: false,
             closeOnClick: true,
-            pauseOnHover:true,
-            draggable:true,
+            pauseOnHover: true,
+            draggable: true,
             progress: undefined,
             theme: "light",
-          })
-          setLoading(false)
-          navigate("/home")
+          });
+
+          // Update the login status in Redux
+          setIsLoggedIn(false);
         }
-      },
-      (err)=>{
+
+        // Reset loading state
         setLoading(false);
-        toast.error("Failed",{
-          position:"top-right",
+      },
+      (err) => {
+        setLoading(false);
+        toast.error("Failed", {
+          position: "top-right",
           autoClose: 3000,
-            hideProgressBar:false,
-            closeOnClick: true,
-            pauseOnHover:true,
-            draggable:true,
-            progress: undefined,
-            theme: "light",
-        })
-        navigate("/home")
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+
+        // Update the login status in Redux
+        setIsLoggedIn(false);
+
+        // Navigate to the home page on error
+        navigate("/home");
       }
-    )
-    // onLogin();
-    onClose();
+    );
   };
-
-  // Handle menu open
-  const handleMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  // Handle menu close
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
-
-  // Handle logout
-  const handleLogout = () => {
-    // Clear user-related cookies or session data
-    clearSession();
-    // Additional logout logic if needed
-    handleMenuClose();
-  };
-
-  const isMenuOpen = Boolean(anchorEl);
 
   return (
-    <>
-      {/* Person icon and user name or login button */}
-      {/* Login Dialog */}
-      <Dialog open={isOpen} onClose={onClose}>
-        <DialogTitle sx={{ backgroundColor: "#f0f8ff", color: "black" }}>
-          Login
-        </DialogTitle>
-        <DialogContent sx={{ backgroundColor: "#f0f8ff", padding: "16px" }}>
-          <TextField
-            label="Phone Number"
-            type="tel"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            fullWidth
-            margin="normal"
-          />
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleSendOtp}
-            disabled={isSendButtonDisabled}
-            sx={{ mt: 2, backgroundColor: "darkgreen", color: "white" }}
+    <Dialog open={login.isOpen} onClose={props.onClose}>
+      <DialogTitle sx={{ backgroundColor: "#f0f8ff", color: "black" }}>
+        Login{" "}
+      </DialogTitle>{" "}
+      <DialogContent sx={{ backgroundColor: "#f0f8ff", padding: "16px" }}>
+        <TextField
+          label="Phone Number"
+          type="tel"
+          value={login.phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          fullWidth
+          margin="normal"
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleSendOtp}
+          disabled={login.isSendButtonDisabled}
+          sx={{ mt: 2, backgroundColor: "darkgreen", color: "white" }}
+        >
+          {login.isSendButtonDisabled
+            ? `Resend OTP in ${login.secondsRemaining} seconds`
+            : "Send OTP"}{" "}
+        </Button>{" "}
+        {login.isOtpSent && (
+          <>
+            <TextField
+              label="Enter OTP"
+              type="text"
+              value={login.otp}
+              onChange={(e) => setOtp(e.target.value)}
+              fullWidth
+              margin="normal"
+            />
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleLogin}
+              sx={{ mt: 2, backgroundColor: "darkgreen", color: "white" }}
+            >
+              Login{" "}
+            </Button>{" "}
+          </>
+        )}{" "}
+        <p>
+          Don 't have an account?{" "}
+          <Link
+            to="/signup"
+            onClick={props.onClose}
+            style={{ color: "darkgreen" }}
           >
-            {isSendButtonDisabled
-              ? `Resend OTP in ${secondsRemaining} seconds`
-              : "Send OTP"}
-          </Button>
-          {isOtpSent && (
-            <>
-              <TextField
-                label="Enter OTP"
-                type="text"
-                value={otp}
-                onChange={(e) => setOtp(e.target.value)}
-                fullWidth
-                margin="normal"
-              />
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleLogin}
-                sx={{ mt: 2, backgroundColor: "darkgreen", color: "white" }}
-              >
-                Login
-              </Button>
-            </>
-          )}
-          <p>
-            Don't have an account?{" "}
-            <Link to="/signup" onClick={onClose} style={{ color: "darkgreen" }}>
-              Register here
-            </Link>
-          </p>
-        </DialogContent>
-      </Dialog>
-    </>
+            Register here{" "}
+          </Link>{" "}
+        </p>{" "}
+      </DialogContent>{" "}
+    </Dialog>
   );
 };
 
-export default LoginDialog;
+const mapStateToProps = (state) => ({
+  login: state.login,
+});
+
+const mapDispatchToProps = {
+  setPhoneNumber,
+  setOtp,
+  setIsOtpSent,
+  setIsSendButtonDisabled,
+  setSecondsRemaining,
+  setLoading,
+  setIsLoggedIn,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginDialog);
