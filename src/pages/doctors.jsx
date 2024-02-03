@@ -195,7 +195,7 @@ const HorizontalScrollableDoctorList = () => {
       location: "Delhi",
     },
   ];
-  const itemsPerPage = 8;
+  const itemsPerPage = 4;
   const [currentPage, setCurrentPage] = useState(1);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [currentDoctors, setCurrentDoctors] = useState([]);

@@ -3,12 +3,12 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { doPostRequest } from "../Request";
 import Logo from "../assets/icons/Logo.jpeg"; // Update the path to your logo
 import styles from "./styles"; // Import the styles
-
 const Signup = ({ history }) => {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -17,7 +17,8 @@ const Signup = ({ history }) => {
     state: "",
     pincode: "",
   });
-
+  const [isLoading,setLoading] = useState(false);
+  const navigate = useNavigate();
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
@@ -28,6 +29,88 @@ const Signup = ({ history }) => {
   const handleSignup = async () => {
     // Simulate user registration and OTP verification (replace with actual backend logic)
     try {
+      if (!formData.phoneNumber) {
+        toast.error("please enter phoneNumber", {
+          position: "top-right",
+          autoClose: 3000,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "Light",
+        });
+        return;
+      }
+      if (!formData.fullName) {
+        toast.error("please enter name", {
+          position: "top-right",
+          autoClose: 3000,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "Light",
+        });
+        return;
+      }
+      
+      setLoading(true);
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      var reqJson = {
+        method: "POST",
+        headers: myHeaders,
+        body: JSON.stringify({
+          contactNumber: formData.phoneNumber,
+          fullName: formData.fullName,
+          country: formData.country,
+          pincode : formData.pincode,
+          // key2: "value2",
+        }),
+      };
+
+      doPostRequest(
+        Signup,
+        reqJson,
+        (resp) => {
+          var loginResp = JSON.parse(resp);
+          if (loginResp.status === "SUCCESS") {
+            console.log("Signup Succesfully");
+
+            //sendOtpForverification(); we will call here for sending otp;
+            navigate("/dashboaard");
+          } else {
+            toast.error("Login Failed", {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+            setLoading(false);
+            navigate("/home");
+          }
+        },
+        (err) => {
+          setLoading(false);
+          toast.error("Failed", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+          navigate("/home");
+        }
+      );
+      // onLogin();
+
       // Assuming AuthService.signup returns a boolean indicating successful registration
       // const isRegistered = await AuthService.signup(formData);
       const isRegistered = true;

@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #a8b8c8;
+    /* background-color: #a8b8c8; */
 }
 
 .container {
@@ -18,11 +18,24 @@ body {
     /* Align items to the start (left) */
 }
 
+.green-line {
+    width: 20px;
+    /* Adjust the width of the line */
+    height: 2px;
+    /* Adjust the thickness of the line */
+    background-color: lightgreen;
+    /* Adjust the color of the line */
+    margin: 0 10px;
+    /* Adjust the spacing between the line and icons/content */
+}
+
 h1,
 h2 {
-    text-align: left;
+    text-align: center;
     /* Align text to the left */
-    color: #3184de;
+    color: #0a0a0a;
+    /* font: status-bar; */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     /* Set color to a nice blue, you can adjust this */
 }
 

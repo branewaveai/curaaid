@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar/nav";
 import Home from "./components/homePage/home";
 import Login from "./login/login";
@@ -8,18 +8,9 @@ import Dashboard from "./pages/dashboard";
 import Doctors from "./pages/doctors";
 import Hospitals from "./pages/hospitals";
 import Treatments from "./pages/treatments";
+import ProtectedRoute from "./privateRoute";
 import DoctorAppointments from "./signup/appointment";
 import SignUp from "./signup/signup";
-
-const ProtectedRoute = ({ element }) => {
-  // If user is authenticated, render the protected element, else redirect to login
-  const authToken = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("authToken="))
-    ?.split("=")[1];
-
-  return authToken ? element : <Navigate to="/login" />;
-};
 
 function App() {
   return (
