@@ -8,6 +8,7 @@ import "./home.css";
 
 const Home = () => {
   return (
+    
     <Container className="container">
       <Typography variant="h2">
         <span>Unvieling our </span>
