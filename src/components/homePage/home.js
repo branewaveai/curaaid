@@ -2,11 +2,17 @@
 import { Button, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import DoctorList from "../../pages/doctors";
+import Features from "./Features";
 import "./home.css";
+
+
 const Home = () => {
   return (
     <Container className="container">
-      <Typography variant="h2"><span>Unvieling our </span><br></br>      <span>mission and vision</span></Typography>
+      <Typography variant="h2">
+        <span>Unvieling our </span>
+        <br></br> <span>mission and vision</span>
+      </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           {/* Your first block of content */}
@@ -33,7 +39,7 @@ const Home = () => {
           </Grid>
         </Grid>
       </Grid>
-
+      <Features/>
       <Grid container spacing={1}>
         {/* Main Content */}
         <Grid item xs={12}>

@@ -1,3 +1,6 @@
+import React from "react";
+import { Navigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const ProtectedRoute = ({ element }) => {
     // If user is authenticated, render the protected element, else redirect to login
     const authToken = document.cookie
