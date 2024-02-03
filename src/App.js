@@ -1,5 +1,6 @@
 import React from "react";
 import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { toast } from "react-toastify";
 import Navbar from "./components/Navbar/nav";
 import Home from "./components/homePage/home";
 import Login from "./login/login";
@@ -18,7 +19,21 @@ const ProtectedRoute = ({ element }) => {
     .find((row) => row.startsWith("authToken="))
     ?.split("=")[1];
 
-  return authToken ? element : <Navigate to="/login" />;
+    if (authToken) {
+      return element;
+    } else {
+      toast.error("Please login first!",{
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar:false,
+        closeOnClick: true,
+        pauseOnHover:true,
+        draggable:true,
+        progress: undefined,
+        theme: "light",
+      });
+      return <Navigate to="/home" />;
+    }
 };
 
 function App() {

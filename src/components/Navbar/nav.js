@@ -42,7 +42,7 @@ function Navbar() {
         <nav className={`${styles.navbar}`}>
           <Link to="/" className={`${styles.logo}`}>
             <img src={logo} alt="Logo" />
-          </Link>
+          </Link>{" "}
           <ul className={`${styles.navMenu} ${isActive ? styles.active : ""}`}>
             <li onClick={removeActive}>
               <Link to="/home" className={`${styles.navLink}`}>
@@ -69,11 +69,16 @@ function Navbar() {
                 Blogs{" "}
               </Link>{" "}
             </li>{" "}
+            <li onClick={removeActive}>
+              <Link to="/dashboard" className={`${styles.navLink}`}>
+                Dashboard{" "}
+              </Link>{" "}
+            </li>{" "}
             {/* Other menu items */}{" "}
             <li onClick={openLoginDialog} className={`${styles.navLink}`}>
               Login{" "}
             </li>{" "}
-          </ul>
+          </ul>{" "}
           <div
             className={`${styles.hamburger} ${isActive ? styles.active : ""}`}
             onClick={toggleActiveClass}
@@ -83,7 +88,7 @@ function Navbar() {
             <span className={`${styles.bar}`}> </span>{" "}
           </div>{" "}
         </nav>{" "}
-      </header>
+      </header>{" "}
       {/* Add the LoginDialog */}{" "}
       {isLoginDialogOpen && (
         <LoginDialog
@@ -91,7 +96,7 @@ function Navbar() {
           onClose={closeLoginDialog}
           onLogin={handleLogin}
         />
-      )}
+      )}{" "}
       <ToastContainer position="top-center" autoClose={5000} />{" "}
     </div>
   );

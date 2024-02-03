@@ -1,11 +1,7 @@
-import PersonIcon from "@mui/icons-material/Person";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -95,6 +91,7 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
 
 
           //sendOtpForverification(); we will call here for sending otp;
+          navigate("/dashboaard");
         }
         else{
           toast.error("Login Failed",{
@@ -108,6 +105,7 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
             theme: "light",
           })
           setLoading(false)
+          navigate("/home")
         }
       },
       (err)=>{
@@ -122,6 +120,7 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
             progress: undefined,
             theme: "light",
         })
+        navigate("/home")
       }
     )
     // onLogin();
@@ -151,36 +150,6 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
   return (
     <>
       {/* Person icon and user name or login button */}
-      {isLoggedIn ? (
-        <IconButton
-          onClick={handleMenuOpen}
-          color="inherit"
-          size="large"
-          sx={{ ml: 2 }}
-        >
-          <PersonIcon />
-        </IconButton>
-      ) : (
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleLogin}
-          sx={{ ml: 2, backgroundColor: "darkgreen", color: "white" }}
-        >
-          Login
-        </Button>
-      )}
-
-      {/* Menu for user actions */}
-      <Menu
-        anchorEl={anchorEl}
-        open={isMenuOpen}
-        onClose={handleMenuClose}
-        onClick={handleMenuClose}
-      >
-        <MenuItem onClick={handleLogout}>Logout</MenuItem>
-      </Menu>
-
       {/* Login Dialog */}
       <Dialog open={isOpen} onClose={onClose}>
         <DialogTitle sx={{ backgroundColor: "#f0f8ff", color: "black" }}>
