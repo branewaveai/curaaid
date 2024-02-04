@@ -61,10 +61,13 @@ const Signup = ({ history }) => {
         method: "POST",
         headers: myHeaders,
         body: JSON.stringify({
-          contactNumber: formData.phoneNumber,
-          fullName: formData.fullName,
-          country: formData.country,
-          pincode : formData.pincode,
+          // contactNumber: formData.phoneNumber,
+          username: formData.phoneNumber,
+          name: formData.fullName,
+          password: 12345,
+          // fullName: formData.fullName,
+          // country: formData.country,
+          // pincode : formData.pincode,
           // key2: "value2",
         }),
       };
@@ -73,7 +76,7 @@ const Signup = ({ history }) => {
         Signup,
         reqJson,
         (resp) => {
-          var loginResp = JSON.parse(resp);
+          var loginResp = resp;
           if (loginResp.status === "SUCCESS") {
             console.log("Signup Succesfully");
 

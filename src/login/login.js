@@ -1,17 +1,23 @@
+// src/components/LoginDialog.js
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { doPostRequest } from "../Request";
-import { clearSession, getItem, setItem } from "../Utils/utils"; // Import your storage utils here
-import { LoginUser } from "../config";
+import { clearSession, setItem } from "../Utils/utils"; // Import your storage utils here
+import { setIsLoggedIn, setPhoneNumber } from "../actions/loginActions"; // Import your action creators here
+import { CONST_KEYS, LoginUser } from "../config";
 
 const LoginDialog = ({ isOpen, onClose, onLogin }) => {
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const dispatch = useDispatch();
+  const phoneNumber = useSelector((state) => state.login.phoneNumber);
+  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+
   const [otp, setOtp] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isSendButtonDisabled, setIsSendButtonDisabled] = useState(false);
@@ -19,7 +25,6 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
   const [isLoading, setLoading] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null); // For menu anchor element
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(!!getItem("userName"));
 
   const handleSendOtp = () => {
     setIsOtpSent(true);
@@ -33,7 +38,6 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
     const countdownInterval = setInterval(() => {
       setSecondsRemaining((prevSeconds) => prevSeconds - 1);
 
-
       if (seconds === 0) {
         clearInterval(countdownInterval);
         setIsSendButtonDisabled(false);
@@ -44,7 +48,7 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
 
   const handleLogin = () => {
     if (!phoneNumber) {
-      toast.error("please enter phoneNumber", {
+      toast.error("Please enter phone number", {
         position: "top-right",
         autoClose: 3000,
         closeOnClick: true,
@@ -56,7 +60,7 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
       return;
     }
     if (!otp) {
-      toast.error("please enter otp", {
+      toast.error("Please enter OTP", {
         position: "top-right",
         autoClose: 3000,
         closeOnClick: true,
@@ -69,61 +73,83 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
     }
     const userName = "John Doe";
     setItem("userName", userName);
-    setIsLoggedIn(!!getItem("userName"));
     setLoading(true);
     var myHeaders = new Headers();
-    myHeaders.append("Content-Type","application/json");
+    myHeaders.append("Content-Type", "application/json");
     var reqJson = {
       method: "POST",
       headers: myHeaders,
       body: JSON.stringify({
-        contactNumber: phoneNumber,
-        // key2: "value2",
+        // contactNumber: phoneNumber,
+        username: phoneNumber,
+        password: otp
       }),
-    }
+    };
 
+    // Make the login API call
     doPostRequest(
-      LoginUser, reqJson,
-      (resp)=>{
-        var loginResp = JSON.parse(resp);
-        if(loginResp.status==='SUCCESS'){
-          console.log("Logedin Succesfully");
+      LoginUser,
+      reqJson,
+      (resp) => {
+        var loginResp = resp;
+        console.log(loginResp);
+        if (loginResp.status === "SUCCESS") {
+          console.log("Logged in Successfully");
 
+          // Redirect to the dashboard
+          dispatch(setIsLoggedIn(true));
+          localStorage.setItem("name", loginResp.user.name);
+          localStorage.setItem(CONST_KEYS.token,loginResp.token);
+          let v = localStorage.getItem(CONST_KEYS.token);
 
-          //sendOtpForverification(); we will call here for sending otp;
-          navigate("/dashboaard");
-        }
-        else{
-          toast.error("Login Failed",{
+          console.log(v);
+          console.log(loginResp.user.name);
+          dispatch(setIsLoggedIn(true));
+          navigate("/dashboard");
+        } else {
+          toast.error("Login Failed", {
             position: "top-right",
             autoClose: 3000,
-            hideProgressBar:false,
+            hideProgressBar: false,
             closeOnClick: true,
-            pauseOnHover:true,
-            draggable:true,
+            pauseOnHover: true,
+            draggable: true,
             progress: undefined,
             theme: "light",
-          })
-          setLoading(false)
-          navigate("/home")
+          });
+
+          // Update the login status in Redux
+          dispatch(setIsLoggedIn(false));
+
+          // Navigate to the home page on error
+          onClose();
+          navigate("/home");
         }
-      },
-      (err)=>{
+
+        // Reset loading state
         setLoading(false);
-        toast.error("Failed",{
-          position:"top-right",
+      },
+      (err) => {
+        setLoading(false);
+        toast.error("Failed", {
+          position: "top-right",
           autoClose: 3000,
-            hideProgressBar:false,
-            closeOnClick: true,
-            pauseOnHover:true,
-            draggable:true,
-            progress: undefined,
-            theme: "light",
-        })
-        navigate("/home")
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+
+        // Update the login status in Redux
+        dispatch(setIsLoggedIn(false));
+
+        // Navigate to the home page on error
+        onClose();
+        navigate("/home");
       }
-    )
-    // onLogin();
+    );
     onClose();
   };
 
@@ -160,7 +186,7 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
             label="Phone Number"
             type="tel"
             value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            onChange={(e) => dispatch(setPhoneNumber(e.target.value))}
             fullWidth
             margin="normal"
           />

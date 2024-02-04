@@ -1,7 +1,7 @@
 export const Base_url = "https://curaaid.connect.com/"
 
-export const LoginUser = "/login";
-export const SignUpUser = "/signup";
+export const LoginUser = "https://448yam6tmc.execute-api.ap-south-1.amazonaws.com/dev//login";
+export const SignUpUser = "https://448yam6tmc.execute-api.ap-south-1.amazonaws.com/dev//register";
 
 export const LOGIN_CHK = {
     isLoggedIn: false
