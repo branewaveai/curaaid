@@ -1,16 +1,23 @@
 // Navbar.js
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { setIsLoggedIn } from "../../actions/loginActions";
 import logo from "../../assets/icons/Logo.jpeg";
 import LoginDialog from "../../login/login";
 import styles from "./navStyles.module.css";
+
 function Navbar() {
+  const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const [isActive, setIsActive] = useState(false);
   const [isLoginDialogOpen, setLoginDialogOpen] = useState(false);
+  useEffect(() => {
+    const storedName = localStorage.getItem("name");
+    console.log("isLoggedIn state changed:", isLoggedIn);
+  }, [isLoggedIn]);
 
   const toggleActiveClass = () => {
     setIsActive(!isActive);
@@ -29,19 +36,14 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    // Your logout logic here
-    // ...
-
-    // For simplicity, let's consider the logout is successful
+    
     toast.success("Logout successful!");
+    dispatch(setIsLoggedIn (false));
     localStorage.clear();
-    localStorage.setItem("token",'');
+    localStorage.setItem("token", "");
   };
   const handleLogin = () => {
-    // Your login logic here
-    // ...
-
-    // For simplicity, let's consider the login is successful
+    
     toast.success("Login successful!");
     closeLoginDialog();
   };
@@ -54,7 +56,7 @@ function Navbar() {
             <Link to="/" className={`${styles.logo}`}>
               <img src={logo} alt="Logo" />
             </Link>{" "}
-          </div>
+          </div>{" "}
           <div className={`${styles.centerNav}`}>
             <div
               className={`${styles.navMenu} ${isActive ? styles.active : ""}`}
@@ -102,7 +104,7 @@ function Navbar() {
                 Dashboard{" "}
               </Link>{" "}
             </div>{" "}
-          </div>
+          </div>{" "}
           {isLoggedIn ? (
             <div>
               <div className={`${styles.personIcon}`}> &#128100;</div>
@@ -116,7 +118,7 @@ function Navbar() {
             <div className={`${styles.loginLink}`} onClick={openLoginDialog}>
               Login{" "}
             </div>
-          )}
+          )}{" "}
           <div
             className={`${styles.hamburger} ${isActive ? styles.active : ""}`}
             onClick={toggleActiveClass}
@@ -126,7 +128,7 @@ function Navbar() {
             <span className={`${styles.bar}`}> </span>{" "}
           </div>{" "}
         </nav>{" "}
-      </header>
+      </header>{" "}
       {/* Add the LoginDialog */}{" "}
       {isLoginDialogOpen && (
         <LoginDialog

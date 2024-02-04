@@ -71,14 +71,8 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
       });
       return;
     }
-
-    // Dispatch action to update isLoggedIn state
-    dispatch(setIsLoggedIn(true));
-
     const userName = "John Doe";
     setItem("userName", userName);
-
-    // Your existing logic for API call
     setLoading(true);
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -103,6 +97,7 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
           console.log("Logged in Successfully");
 
           // Redirect to the dashboard
+          dispatch(setIsLoggedIn(true));
           localStorage.setItem("name", loginResp.user.name);
           localStorage.setItem(CONST_KEYS.token,loginResp.token);
           let v = localStorage.getItem(CONST_KEYS.token);
