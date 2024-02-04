@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import { doPostRequest } from "../Request";
 import { clearSession, setItem } from "../Utils/utils"; // Import your storage utils here
 import { setIsLoggedIn, setPhoneNumber } from "../actions/loginActions"; // Import your action creators here
-import { LoginUser } from "../config";
+import { CONST_KEYS, LoginUser } from "../config";
 
 const LoginDialog = ({ isOpen, onClose, onLogin }) => {
   const dispatch = useDispatch();
@@ -86,7 +86,9 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
       method: "POST",
       headers: myHeaders,
       body: JSON.stringify({
-        contactNumber: phoneNumber,
+        // contactNumber: phoneNumber,
+        username: phoneNumber,
+        password: otp
       }),
     };
 
@@ -95,11 +97,18 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
       LoginUser,
       reqJson,
       (resp) => {
-        var loginResp = JSON.parse(resp);
+        var loginResp = resp;
+        console.log(loginResp);
         if (loginResp.status === "SUCCESS") {
           console.log("Logged in Successfully");
 
           // Redirect to the dashboard
+          localStorage.setItem("name", loginResp.user.name);
+          localStorage.setItem(CONST_KEYS.token,loginResp.token);
+          let v = localStorage.getItem(CONST_KEYS.token);
+
+          console.log(v);
+          console.log(loginResp.user.name);
           dispatch(setIsLoggedIn(true));
           navigate("/dashboard");
         } else {
@@ -139,13 +148,14 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
         });
 
         // Update the login status in Redux
-        dispatch(setIsLoggedIn(true));
+        dispatch(setIsLoggedIn(false));
 
         // Navigate to the home page on error
         onClose();
         navigate("/home");
       }
     );
+    onClose();
   };
 
   // Handle menu open

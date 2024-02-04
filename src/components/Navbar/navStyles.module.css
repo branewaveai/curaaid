@@ -10,6 +10,10 @@ ul {
     list-style: none;
 }
 
+body {
+    font-family: 'Roboto Slab', serif;
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -29,6 +33,7 @@ a {
     min-height: 70px;
     position: relative;
     z-index: 2;
+    font-family: 'Roboto Slab', serif;
 }
 
 
@@ -51,8 +56,10 @@ a {
 
 .navMenu {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    /* Center the menu items */
     align-items: center;
+    /* justify-content: space-between; */
     gap: 60px;
 }
 
@@ -112,7 +119,8 @@ a {
 
 /* Additional styles for larger screens */
 
-@media screen and (min-width: 781px) {
+
+/* @media screen and (min-width: 781px) {
     .hamburger {
         display: none;
     }
@@ -125,6 +133,35 @@ a {
         background-color: transparent;
         padding: 0;
         gap: 40px;
+    }
+    .navMenu li {
+        margin: 0;
+    }
+    .navMenu.active {
+        display: none;
+    }
+} */
+
+@media screen and (min-width: 781px) {
+    .navMenu {
+        gap: 40px;
+        /* Adjust the gap as needed */
+    }
+    .loginLink {
+        margin-left: 0;
+        /* Reset margin for larger screens */
+    }
+    .hamburger {
+        display: none;
+    }
+    .navMenu {
+        display: flex;
+        position: relative;
+        top: auto;
+        left: auto;
+        width: auto;
+        background-color: transparent;
+        padding: 0;
     }
     .navMenu li {
         margin: 0;

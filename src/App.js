@@ -1,5 +1,7 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { setIsLoggedIn } from "./actions/loginActions";
 import Navbar from "./components/Navbar/nav";
 import Home from "./components/homePage/home";
 import Login from "./login/login";
@@ -13,6 +15,11 @@ import DoctorAppointments from "./signup/appointment";
 import SignUp from "./signup/signup";
 
 function App() {
+  const dispatch = useDispatch();
+  if(localStorage.getItem('token')){
+
+    dispatch(setIsLoggedIn(true));
+  }
   return (
     <Router>
       <Navbar />
