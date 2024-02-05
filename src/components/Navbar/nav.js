@@ -55,8 +55,8 @@ function Navbar() {
           <div className={`${styles.leftNav}`}>
             <Link to="/" className={`${styles.logo}`}>
               <img src={logo} alt="Logo" />
-            </Link>{" "}
-          </div>{" "}
+            </Link>
+          </div>
           <div className={`${styles.centerNav}`}>
             <div
               className={`${styles.navMenu} ${isActive ? styles.active : ""}`}
@@ -66,78 +66,78 @@ function Navbar() {
                 className={`${styles.navLink}`}
                 onClick={removeActive}
               >
-                Home{" "}
-              </Link>{" "}
+                Home
+              </Link>
               <Link
                 to="/treatments"
                 className={`${styles.navLink}`}
                 onClick={removeActive}
               >
-                Treatments{" "}
-              </Link>{" "}
+                Treatments
+              </Link>
               <Link
                 to="/hospitals"
                 className={`${styles.navLink}`}
                 onClick={removeActive}
               >
-                Hospitals{" "}
-              </Link>{" "}
+                Hospitals
+              </Link>
               <Link
                 to="/doctors"
                 className={`${styles.navLink}`}
                 onClick={removeActive}
               >
-                Doctors{" "}
-              </Link>{" "}
+                Doctors
+              </Link>
               <Link
                 to="/blogs"
                 className={`${styles.navLink}`}
                 onClick={removeActive}
               >
-                Blogs{" "}
-              </Link>{" "}
+                Blogs
+              </Link>
               <Link
                 to="/dashboard"
                 className={`${styles.navLink}`}
                 onClick={removeActive}
               >
-                Dashboard{" "}
-              </Link>{" "}
-            </div>{" "}
-          </div>{" "}
+                Dashboard
+              </Link>
+            </div>
+          </div>
           {isLoggedIn ? (
             <div>
               <div className={`${styles.personIcon}`}> &#128100;</div>
               <span>{localStorage.getItem("name")}</span>
               <div className={`${styles.logoutLink}`} onClick={handleLogout}>
-                Logout{" "}
-              </div>{" "}
+                Logout
+              </div>
             </div>
           ) : (
             // Render login button
             <div className={`${styles.loginLink}`} onClick={openLoginDialog}>
-              Login{" "}
+              Login
             </div>
-          )}{" "}
+          )}
           <div
             className={`${styles.hamburger} ${isActive ? styles.active : ""}`}
             onClick={toggleActiveClass}
           >
-            <span className={`${styles.bar}`}> </span>{" "}
-            <span className={`${styles.bar}`}> </span>{" "}
-            <span className={`${styles.bar}`}> </span>{" "}
-          </div>{" "}
-        </nav>{" "}
-      </header>{" "}
-      {/* Add the LoginDialog */}{" "}
+            <span className={`${styles.bar}`}> </span>
+            <span className={`${styles.bar}`}> </span>
+            <span className={`${styles.bar}`}> </span>
+          </div>
+        </nav>
+      </header>
+      {/* Add the LoginDialog */}
       {isLoginDialogOpen && (
         <LoginDialog
           isOpen={isLoginDialogOpen}
           onClose={closeLoginDialog}
           onLogin={handleLogin}
         />
-      )}{" "}
-      <ToastContainer position="top-center" autoClose={5000} />{" "}
+      )}
+      <ToastContainer position="top-center" autoClose={5000} />
     </div>
   );
 }
