@@ -9,15 +9,15 @@ import "react-toastify/dist/ReactToastify.css";
 import { doPostRequest } from "../Request";
 import Logo from "../assets/icons/Logo.jpeg"; // Update the path to your logo
 import styles from "./styles"; // Import the styles
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { SignUpUser } from "../config";
 const Signup = ({ history }) => {
   const [formData, setFormData] = useState({
     fullName: "",
     phoneNumber: "",
     country: "",
-    state: "",
-    pincode: "",
   });
-  const [isLoading,setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleInputChange = (e) => {
     setFormData({
@@ -25,10 +25,17 @@ const Signup = ({ history }) => {
       [e.target.name]: e.target.value,
     });
   };
+  const countrys = [
+    { code: "+91", name: "India" },
+    { code: "+880", name: "Bangladesh" },
+    { code: "+61", name: "Australia" },
+    { code: "+966", name: "Saudi Arabia" },
+  ];
 
   const handleSignup = async () => {
     // Simulate user registration and OTP verification (replace with actual backend logic)
     try {
+      let isRegistered = false;
       if (!formData.phoneNumber) {
         toast.error("please enter phoneNumber", {
           position: "top-right",
@@ -42,7 +49,7 @@ const Signup = ({ history }) => {
         return;
       }
       if (!formData.fullName) {
-        toast.error("please enter name", {
+        toast.error("please enter full name", {
           position: "top-right",
           autoClose: 3000,
           closeOnClick: true,
@@ -53,7 +60,13 @@ const Signup = ({ history }) => {
         });
         return;
       }
-      
+      let chosenCountry = countrys.find(
+        (country) => country.code === formData.country
+      );
+      let fullNumber = chosenCountry.code + formData.phoneNumber;
+      console.log("fullNumber", fullNumber);
+      console.log("phonehehe", formData.country);
+      console.log("phonehehe", chosenCountry.name);
       setLoading(true);
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -62,26 +75,27 @@ const Signup = ({ history }) => {
         headers: myHeaders,
         body: JSON.stringify({
           // contactNumber: formData.phoneNumber,
-          username: formData.phoneNumber,
+          username: fullNumber,
           name: formData.fullName,
           password: 12345,
-          // fullName: formData.fullName,
-          // country: formData.country,
+          countryCode: formData.country,
+          countryName: chosenCountry.name,
           // pincode : formData.pincode,
           // key2: "value2",
         }),
       };
 
       doPostRequest(
-        Signup,
+        SignUpUser,
         reqJson,
         (resp) => {
-          var loginResp = resp;
-          if (loginResp.status === "SUCCESS") {
+          var signupResp = resp;
+          if (signupResp.status === "SUCCESS") {
             console.log("Signup Succesfully");
-
+            // toast.success("You have been registered. Kindly login please");
+            isRegistered = true;
             //sendOtpForverification(); we will call here for sending otp;
-            navigate("/dashboaard");
+            // navigate("/home");
           } else {
             toast.error("Login Failed", {
               position: "top-right",
@@ -116,14 +130,12 @@ const Signup = ({ history }) => {
 
       // Assuming AuthService.signup returns a boolean indicating successful registration
       // const isRegistered = await AuthService.signup(formData);
-      const isRegistered = true;
       if (isRegistered) {
         // Display a toast message for successful registration
-        toast.success(
-          "Registration successful. Please check your phone for OTP."
-        );
+        toast.success("You have been registered. Kindly login please");
 
         // Redirect to the login page after a successful registration
+        navigate("/home");
         history.push("/login");
       } else {
         // Display a toast message if the user already exists
@@ -168,6 +180,31 @@ const Signup = ({ history }) => {
           style={{ width: "100%" }}
           margin="normal"
         />
+        <FormControl
+          fullWidth
+          margin="normal"
+          style={{ backgroundColor: formData.country ? "#D3D3D3" : "white" }}
+        >
+          <InputLabel id="select-country-label">Select Country</InputLabel>
+          <Select
+            name="country"
+            labelId="select-country-label"
+            label="Select Country"
+            value={formData.country} // Set the value to the country code
+            onChange={handleInputChange}
+          >
+            <MenuItem value="" disabled>
+              Select country
+            </MenuItem>
+            {countrys.map((slot) => (
+              <MenuItem key={slot.code} value={slot.code}>
+                <b style={{ fontSize: 16 }}>
+                  {slot.code} | {slot.name}
+                </b>
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
         <TextField
           label="Phone Number"
           type="tel"
@@ -177,7 +214,7 @@ const Signup = ({ history }) => {
           style={{ width: "100%" }}
           margin="normal"
         />
-        <TextField
+        {/* <TextField
           label="Country"
           type="text"
           name="country"
@@ -185,8 +222,9 @@ const Signup = ({ history }) => {
           onChange={handleInputChange}
           style={{ width: "100%" }}
           margin="normal"
-        />
-        <TextField
+        /> */}
+
+        {/* <TextField
           label="State"
           type="text"
           name="state"
@@ -203,7 +241,7 @@ const Signup = ({ history }) => {
           onChange={handleInputChange}
           style={{ width: "100%" }}
           margin="normal"
-        />
+        /> */}
         <Button
           variant="contained"
           color="primary"
