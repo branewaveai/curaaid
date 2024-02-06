@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import DoctorCard from "../components/hospital/doctorCard";
 import "../components/styles/doctorCard.css"; // Make sure to import your CSS file
 
-const HorizontalScrollableDoctorList = () => {
+const HorizontalScrollableDoctorList = ({ doctorsToShowPerPage }) => {
   const doctors = [
     {
       doctorId: 1,
@@ -195,7 +195,7 @@ const HorizontalScrollableDoctorList = () => {
       location: "Delhi",
     },
   ];
-  const itemsPerPage = 4;
+  const itemsPerPage =  doctorsToShowPerPage || 4;
   const [currentPage, setCurrentPage] = useState(1);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [currentDoctors, setCurrentDoctors] = useState([]);
@@ -261,8 +261,8 @@ const HorizontalScrollableDoctorList = () => {
         style={{
           display: "grid",
           gridTemplateColumns: `repeat(${columns}, 1fr)`,
-          gap: "10px", // Adjust the gap between cards
-          justifyContent: "center", // Center the cards
+          gap: "10px",
+          justifyContent: "center",
         }}
       >
         {currentDoctors.map((doctor) => (

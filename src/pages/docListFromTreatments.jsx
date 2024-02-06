@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import DoctorCard from "../components/hospital/doctorCard";
 const DocListFromTreatments = ({ treatmentId }) => {
   const [doctors, setDoctors] = useState([]);
 

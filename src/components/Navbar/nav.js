@@ -1,4 +1,8 @@
 // Navbar.js
+import PersonIcon from "@mui/icons-material/Person";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -14,6 +18,8 @@ function Navbar() {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const [isActive, setIsActive] = useState(false);
   const [isLoginDialogOpen, setLoginDialogOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+
   useEffect(() => {
     const storedName = localStorage.getItem("name");
     console.log("isLoggedIn state changed:", isLoggedIn);
@@ -36,16 +42,24 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    
     toast.success("Logout successful!");
-    dispatch(setIsLoggedIn (false));
+    dispatch(setIsLoggedIn(false));
     localStorage.clear();
     localStorage.setItem("token", "");
+    setAnchorEl(null);
   };
+
   const handleLogin = () => {
-    
     toast.success("Login successful!");
     closeLoginDialog();
+  };
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -55,8 +69,8 @@ function Navbar() {
           <div className={`${styles.leftNav}`}>
             <Link to="/" className={`${styles.logo}`}>
               <img src={logo} alt="Logo" />
-            </Link>{" "}
-          </div>{" "}
+            </Link>
+          </div>
           <div className={`${styles.centerNav}`}>
             <div
               className={`${styles.navMenu} ${isActive ? styles.active : ""}`}
@@ -66,78 +80,86 @@ function Navbar() {
                 className={`${styles.navLink}`}
                 onClick={removeActive}
               >
-                Home{" "}
-              </Link>{" "}
+                Home
+              </Link>
               <Link
                 to="/treatments"
                 className={`${styles.navLink}`}
                 onClick={removeActive}
               >
-                Treatments{" "}
-              </Link>{" "}
+                Treatments
+              </Link>
               <Link
                 to="/hospitals"
                 className={`${styles.navLink}`}
                 onClick={removeActive}
               >
-                Hospitals{" "}
-              </Link>{" "}
+                Hospitals
+              </Link>
               <Link
                 to="/doctors"
                 className={`${styles.navLink}`}
                 onClick={removeActive}
               >
-                Doctors{" "}
-              </Link>{" "}
+                Doctors
+              </Link>
               <Link
                 to="/blogs"
                 className={`${styles.navLink}`}
                 onClick={removeActive}
               >
-                Blogs{" "}
-              </Link>{" "}
+                Blogs
+              </Link>
               <Link
                 to="/dashboard"
                 className={`${styles.navLink}`}
                 onClick={removeActive}
               >
-                Dashboard{" "}
-              </Link>{" "}
-            </div>{" "}
-          </div>{" "}
+                Dashboard
+              </Link>
+            </div>
+          </div>
+
           {isLoggedIn ? (
             <div>
-              <div className={`${styles.personIcon}`}> &#128100;</div>
-              <span>{localStorage.getItem("name")}</span>
-              <div className={`${styles.logoutLink}`} onClick={handleLogout}>
-                Logout{" "}
-              </div>{" "}
+              <IconButton
+                color="inherit"
+                aria-label="person icon"
+                onClick={handleMenuOpen}
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <span>{localStorage.getItem("name")}</span>
+                <PersonIcon style={{ fontSize: "30px", color: "blue" }} />
+              </IconButton>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleMenuClose}
+              >
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              </Menu>
             </div>
           ) : (
-            // Render login button
-            <div className={`${styles.loginLink}`} onClick={openLoginDialog}>
-              Login{" "}
+            <div
+              className={`${styles.loginLink} ${styles.squareBox}`}
+              onClick={openLoginDialog}
+            >
+              Login
             </div>
-          )}{" "}
-          <div
-            className={`${styles.hamburger} ${isActive ? styles.active : ""}`}
-            onClick={toggleActiveClass}
-          >
-            <span className={`${styles.bar}`}> </span>{" "}
-            <span className={`${styles.bar}`}> </span>{" "}
-            <span className={`${styles.bar}`}> </span>{" "}
-          </div>{" "}
-        </nav>{" "}
-      </header>{" "}
-      {/* Add the LoginDialog */}{" "}
+          )}
+          {/* ... (Hamburger menu) */}
+        </nav>
+      </header>
       {isLoginDialogOpen && (
         <LoginDialog
           isOpen={isLoginDialogOpen}
           onClose={closeLoginDialog}
           onLogin={handleLogin}
         />
-      )}{" "}
-      <ToastContainer position="top-center" autoClose={5000} />{" "}
+      )}
+      <ToastContainer position="top-center" autoClose={5000} />
     </div>
   );
 }

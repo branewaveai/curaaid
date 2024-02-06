@@ -1,3 +1,4 @@
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -8,9 +9,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { doPostRequest } from "../Request";
 import Logo from "../assets/icons/Logo.jpeg"; // Update the path to your logo
-import styles from "./styles"; // Import the styles
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import { SignUpUser } from "../config";
+import styles from "./styles"; // Import the styles
 const Signup = ({ history }) => {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -92,8 +92,30 @@ const Signup = ({ history }) => {
           var signupResp = resp;
           if (signupResp.status === "SUCCESS") {
             console.log("Signup Succesfully");
-            // toast.success("You have been registered. Kindly login please");
             isRegistered = true;
+            console.log(isRegistered);
+            if (isRegistered) {
+              toast.success("You have been registered. Kindly login please", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
+              console.log("aa gye idhr");
+              // Redirect to the login page after a successful registration
+              navigate("/home");
+              // history.push("/login");
+            } else {
+              // Display a toast message if the user already exists
+              toast.warn("User already exists. Please login.");
+
+              // Redirect to the login page for an existing user
+              history.push("/login");
+            }
             //sendOtpForverification(); we will call here for sending otp;
             // navigate("/home");
           } else {
@@ -127,23 +149,10 @@ const Signup = ({ history }) => {
         }
       );
       // onLogin();
+      console.log(isRegistered);
 
       // Assuming AuthService.signup returns a boolean indicating successful registration
       // const isRegistered = await AuthService.signup(formData);
-      if (isRegistered) {
-        // Display a toast message for successful registration
-        toast.success("You have been registered. Kindly login please");
-
-        // Redirect to the login page after a successful registration
-        navigate("/home");
-        history.push("/login");
-      } else {
-        // Display a toast message if the user already exists
-        toast.warn("User already exists. Please login.");
-
-        // Redirect to the login page for an existing user
-        history.push("/login");
-      }
     } catch (error) {
       console.error("Error during signup:", error);
       // Handle error as needed
