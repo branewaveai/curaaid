@@ -24,8 +24,6 @@ const DoctorCard = ({ doctorId, image, name, exp, degree, location }) => {
 
   return (
     <Card className="doctor-card" variant="outlined">
-      {" "}
-      {/* Image at the top */}{" "}
       <div className="doctor-card-image">
         <img src={image} alt="Doctor" className="doctor-image" />
       </div>{" "}

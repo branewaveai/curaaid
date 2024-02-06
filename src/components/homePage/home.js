@@ -1,7 +1,7 @@
 // pages/index.js
 import { Container, Grid, Typography } from "@mui/material";
 import React from "react";
-import DoctorList from "../../pages/doctors";
+import DoctorList from "../../pages/doctorsList";
 import Features from "./Features";
 import "./home.css";
 import TopPage from "./topPage";
@@ -24,10 +24,11 @@ const Home = () => {
         {/* Main Content */}
         <Grid item xs={12}>
           <Typography variant="h4"> Our Team of Expert Doctors </Typography>
-          <DoctorList />
+          <DoctorList doctorsToShowPerPage={4}  />
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="h4"> Our Hospitals </Typography> <DoctorList />
+          <Typography variant="h4"> Our Hospitals </Typography> 
+          <DoctorList />
         </Grid>
       </Grid>
       {/* Additional element */}

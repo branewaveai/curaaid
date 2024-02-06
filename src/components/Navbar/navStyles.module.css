@@ -142,6 +142,19 @@ a {
     }
 } */
 
+.squareBox {
+    /* Styles for the square blue box */
+    background-color: blue;
+    margin-right: 50px;
+    /* Change to your preferred blue color */
+    color: white;
+    padding: 10px 20px;
+    /* Adjust padding as needed */
+    border-radius: 5px;
+    /* Add border-radius for rounded corners */
+    cursor: pointer;
+}
+
 @media screen and (min-width: 781px) {
     .navMenu {
         gap: 40px;
