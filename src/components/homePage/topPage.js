@@ -23,6 +23,7 @@ const Wrapper = styled.div`
   // position: relative;
   margin: 0;
   @media (max-width: 768px) {
+    height:1300px;
     grid-template-columns: 1fr;
   }
 `;
@@ -231,15 +232,15 @@ const TopPage = () => {
               }}
             >
               <QuarterBlock>
-                <IconLink href="https://www.linkedin.com">
-                  <IconContainer>
-                    <FaLinkedin size={24} />
-                  </IconContainer>
-                  LinkedIn
-                </IconLink>
+              <IconLink href="https://www.linkedin.com/company/curaaid/" target="_blank" rel="noopener noreferrer">
+              <IconContainer>
+                <FaLinkedin size={24} />
+              </IconContainer>
+              LinkedIn
+            </IconLink>
               </QuarterBlock>
               <QuarterBlock>
-                <IconLink href="https://www.instagram.com">
+                <IconLink href="https://www.linkedin.com/company/curaaid/">
                   <IconContainer>
                     <FaInstagram size={24} />
                   </IconContainer>
@@ -250,11 +251,10 @@ const TopPage = () => {
             <Block1>
               Random Text Lorem ipsum dolor sit amet, consectetur adipiscing
               elit. Sed vitae mauris nec ligula tempus condimentum. Fusce
-              suscipit libero ac ligula vulputate, vitae Random Text Lorem ipsum
-              dolor sit amet, consectetur adipiscing elit.
+              suscipit libero ac ligula vulputate,
             </Block1>
           </div>
-          <Block style={{ flex: 1 }}>
+          <Block style={{ flex: 1, fontSize:12, fontFamily: "'Roboto Slab', serif" , }}>
             Another Block Lorem ipsum dolor sit amet, consectetur adipiscing
             elit. Sed vitae mauris nec ligula tempus condimentum. Fusce suscipit
             libero ac ligula vulputate, vitae
