@@ -1,12 +1,26 @@
 import React from "react";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import styled from "styled-components";
+
 import CoverImage2 from "../../assets/icons/CoverImage2.png";
 import coverImage1 from "../../assets/icons/coverImage1.png";
 
+const IconLink = styled.a`
+  text-decoration: none;
+  color: inherit;
+`;
+
+const IconContainer = styled.div`
+  margin-right: 5px;
+`;
+
 const Wrapper = styled.div`
   display: grid;
+  border: 1px solid red;
   grid-template-columns: 1fr 1fr;
   max-width: 1200px;
+  height: 740px;
+  // position: relative;
   margin: 0;
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -17,6 +31,7 @@ const Wrapper = styled.div`
 // `;
 
 const BlockContainer = styled.div`
+  border: 1px solid red;
   margin: 5px;
   display: flex;
   flex-direction: column;
@@ -28,17 +43,32 @@ const BlockContainer = styled.div`
     grid-template-columns: 1fr;
   }
 `;
+// const ImageBlock = styled(BlockContainer)`
+//   width: 100%;
+//   height: 40%px;
+//   display: flex;
+//   border: 1px solid #ddd;
+//   align-items: center;
+//   justify-content: center;
+//   margin-bottom: 0px;
+//   border-radius: 5px;
+//   // margin-right: 400px;
+//   @media (max-width: 768px) {
+//     grid-template-columns: 1fr;
+//   }
+// `;
 const ImageBlock = styled(BlockContainer)`
   width: 100%;
-  height: 50%px;
+  height: 300px;
   display: flex;
-  border: 1px solid #ddd;
+  // border: 1px solid #ddd;
+  border: 1px solid red;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0px;
+  margin-right: 40px;
   border-radius: 5px;
-  // margin-right: 400px;
   @media (max-width: 768px) {
+    height: 200px;
     grid-template-columns: 1fr;
   }
 `;
@@ -58,13 +88,18 @@ const ImageContent = styled.img`
 // `;
 const FlexContainer = styled.div`
   display: flex;
+  border: 1px solid red;
   justify-content: normal;
-  height: 50%px;
+  height: 360px;
   border-radius: 10px;
-  margin-bottom: 20px;
+  margin-left: 10px;
+  // margin-bottom: 20px;
+  @media (max-width: 768px) {
+    height: 360px;
+  }
 `;
 
-const Block = styled(BlockContainer)`
+const Block = styled.div`
   border: 1px solid #ddd;
   width: 50%; /* Set the width to 50% */
   height: 100%;
@@ -73,7 +108,7 @@ const Block = styled(BlockContainer)`
   align-items: center;
   justify-content: normal;
   border-radius: 5px;
-  margin-left: 15px;
+  background-color: #1c7ed6;
 `;
 
 // const Block = styled(BlockContainer)`
@@ -97,6 +132,7 @@ const HalfBlock = styled(BlockContainer)`
   border: 1px solid #ddd;
   justify-content: center;
   border-radius: 5px;
+  margin-top: 10x;
 `;
 
 // const HalfBlock = styled(BlockContainer)`
@@ -109,16 +145,18 @@ const HalfBlock = styled(BlockContainer)`
 //   border-radius: 5px;
 // `;
 
-const ImageCover = styled(BlockContainer)`
-  width: 95%;
-  height: 100%;
-  display: flex;
+const ImageCover = styled.div`
+  width: 98%;
+  height: 98px%;
+  // display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 20px;
-  margin-top: 50px;
+  margin-left: 10px;
+  // margin-top: 10px;
+  border: 1px solid red;
   border-radius: 5px;
 `;
+
 // const Block1 = styled(BlockContainer)`
 //   border: 1px solid #ddd;
 //   width: 98%;
@@ -129,7 +167,7 @@ const ImageCover = styled(BlockContainer)`
 //   justify-content: normal;
 // `;
 const Block1 = styled(BlockContainer)`
-  border: 1px solid #ddd;
+  border: 1px solid red;
   width: 98%;
   height: 100%;
   border-radius: 5px;
@@ -154,29 +192,73 @@ const TopPage = () => {
       </ImageBlock>
 
       <FlexContainer>
-        <Block>Another Block</Block>
+        <Block>
+          Another BlockLorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Sed vitae mauris nec ligula tempus condimentum. Fusce suscipit libero
+          ac ligula vulputate, vitae Random Text Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Sed vitae mauris nec ligula tempus
+          condimentum. Fusce suscipit libero ac ligula vulputate, vitae Random
+          Text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+          vitae mauris nec ligula Random Text Lorem ipsum dolor sit amet,{" "}
+        </Block>
         <div style={{ flex: 1 }}>
-          <HalfBlock>Random Text</HalfBlock>
-          <HalfBlock>Random Text</HalfBlock>
+          <HalfBlock>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae
+            mauris nec ligula tempus condimentum. Fusce suscipit libero ac
+            ligula vulputate, vitae
+          </HalfBlock>
+          <HalfBlock>
+            Random Text Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Sed vitae mauris nec ligula tempus condimentum. Fusce suscipit
+            libero ac ligula vulputate, vitae
+          </HalfBlock>
         </div>
       </FlexContainer>
       <BlockContainer
         style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-          width: "100%",
+          marginTop: "-50px",
+          height: "420px",
         }}
       >
-        <div style={{ display: "flex", flex: 1 }}>
+        <div style={{ display: "flex", flex: 1, height: "100px" }}>
           <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
-            <div style={{ display: "flex",flex:1, margin: "0px 0" ,height:"170px"}}>
-              <QuarterBlock>Random Text</QuarterBlock>
-              <QuarterBlock>Random Text</QuarterBlock>
+            <div
+              style={{
+                display: "flex",
+                flex: 1,
+                margin: "10px 0",
+                height: "170px",
+              }}
+            >
+              <QuarterBlock>
+                <IconLink href="https://www.linkedin.com">
+                  <IconContainer>
+                    <FaLinkedin size={24} />
+                  </IconContainer>
+                  LinkedIn
+                </IconLink>
+              </QuarterBlock>
+              <QuarterBlock>
+                <IconLink href="https://www.instagram.com">
+                  <IconContainer>
+                    <FaInstagram size={24} />
+                  </IconContainer>
+                  Instagram
+                </IconLink>
+              </QuarterBlock>
             </div>
-            <Block1>Random Text</Block1>
+            <Block1>
+              Random Text Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Sed vitae mauris nec ligula tempus condimentum. Fusce
+              suscipit libero ac ligula vulputate, vitae Random Text Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit.
+            </Block1>
           </div>
-          <Block style={{ flex: 1 }}>Another Block</Block>
+          <Block style={{ flex: 1 }}>
+            Another Block Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit. Sed vitae mauris nec ligula tempus condimentum. Fusce suscipit
+            libero ac ligula vulputate, vitae
+          </Block>
         </div>
       </BlockContainer>
       <ImageCover>
