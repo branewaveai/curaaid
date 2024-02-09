@@ -153,6 +153,9 @@ a {
     border-radius: 5px;
     /* Add border-radius for rounded corners */
     cursor: pointer;
+    @media screen and (max-width: 781px) {
+        margin-right: 0px;
+    }
 }
 
 @media screen and (min-width: 781px) {
