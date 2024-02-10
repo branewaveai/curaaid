@@ -1,7 +1,7 @@
+import Paper from '@mui/material/Paper';
 import React from "react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import styled from "styled-components";
-
 import CoverImage2 from "../../assets/icons/CoverImage2.png";
 import coverImage1 from "../../assets/icons/coverImage1.png";
 
@@ -32,7 +32,7 @@ const Wrapper = styled.div`
 // `;
 
 const BlockContainer = styled.div`
-  border: 2px solid #ddd;
+  // border: 2px solid #ddd;
   margin: 5px;
   display: flex;
   flex-direction: column;
@@ -89,7 +89,7 @@ const ImageContent = styled.img`
 // `;
 const FlexContainer = styled.div`
   display: flex;
-  border: 2px solid #ddd;
+  // border: 2px solid #ddd;
   justify-content: normal;
   height: 300px;
   border-radius: 10px;
@@ -109,7 +109,7 @@ const Block = styled.div`
   align-items: center;
   justify-content: normal;
   border-radius: 5px;
-  background-color: #1c7ed6;
+  background-color: #10D6D6;
 `;
 
 // const Block = styled(BlockContainer)`
@@ -126,11 +126,10 @@ const Block = styled.div`
 
 const HalfBlock = styled(BlockContainer)`
   flex: 1;
-  max-width: 100%; /* Adjust the maximum width as needed */
+  max-width: 98%; /* Adjust the maximum width as needed */
   height: 48%;
   display: flex;
   align-items: center;
-  border: 2px solid #ddd;
   justify-content: center;
   border-radius: 5px;
   margin-top: 10x;
@@ -168,9 +167,9 @@ const ImageCover = styled.div`
 //   justify-content: normal;
 // `;
 const Block1 = styled(BlockContainer)`
-  border: 1px solid red;
-  width: 98%;
-  height: 50%;
+  border: 1px solid #ddd;
+  width: 97%;
+  height: 55%;
   border-radius: 5px;
   display: flex;
   justify-content: normal;
@@ -178,7 +177,7 @@ const Block1 = styled(BlockContainer)`
 const QuarterBlock = styled(BlockContainer)`
   flex: 1;
   width: 100%;
-  height: 120px;
+  height: 125px;
   border: 2px solid #ddd;
   margin-bottom: 0px;
   margin-top: 0px;
@@ -207,14 +206,16 @@ const TopPage = () => {
         </Block>
         <div style={{ flex: 1 }}>
           <HalfBlock>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae
+          <Paper elevation={3} style={{height:'100%'}}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae
             mauris nec ligula tempus condimentum. Fusce suscipit libero ac
-            ligula vulputate, vitae
+            ligula vulputate, vitae</Paper>
           </HalfBlock>
+          
           <HalfBlock>
-            Random Text Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          <Paper elevation={3} style={{height:'100%'}}>Random Text Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             Sed vitae mauris nec ligula tempus condimentum. Fusce suscipit
-            libero ac ligula vulputate, vitae
+            libero ac ligula vulputate, vitae</Paper>
           </HalfBlock>
         </div>
       </FlexContainer>
@@ -230,7 +231,7 @@ const TopPage = () => {
               style={{
                 display: "flex",
                 flex: 1,
-                margin: "10px 0",
+                margin: "0px 0",
                 height: "100px",
               }}
             >
@@ -254,6 +255,7 @@ const TopPage = () => {
               </QuarterBlock>
             </div>
             <Block1>
+            <span >Video Testomonials</span>
               Random Text Lorem ipsum dolor sit amet, consectetur adipiscing
               elit. Sed vitae mauris nec ligula tempus condimentum. Fusce
               suscipit libero ac ligula vulputate,

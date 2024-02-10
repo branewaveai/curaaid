@@ -8,7 +8,20 @@ body {
     /* background-color: #a8b8c8; */
 }
 
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* Ensure it's behind other content */
+    background-size: cover;
+    background-position: center;
+}
+
 .container {
+    margin-top: 1000px;
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
@@ -19,25 +32,78 @@ body {
     /* Align items to the start (left) */
 }
 
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+/* searchBar.css */
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    width: 70%;
+}
+
+.search-input {
+    width: 100%;
+    height: 40px;
+    padding: 8px;
+    border: 2px solid green;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-button {
+    height: 40px;
+    /* Match input height */
+    padding: 0 16px;
+    /* Adjust padding as needed */
+    background-color: #367bf5;
+    /* Button background color */
+    color: white;
+    /* Button text color */
+    border: none;
+    border-radius: 5px;
+    /* Add border radius */
+    cursor: pointer;
+    font-size: 16px;
+    /* Adjust font size as needed */
+    margin-left: 8px;
+    /* Adjust margin as needed */
+}
+
+.search-button:hover {
+    background-color: #2459bc;
+}
+
 .green-line {
     width: 20px;
-    /* Adjust the width of the line */
     height: 2px;
-    /* Adjust the thickness of the line */
     background-color: lightgreen;
-    /* Adjust the color of the line */
     margin: 0 10px;
-    /* Adjust the spacing between the line and icons/content */
 }
 
 h1,
 h2 {
     text-align: center;
-    /* Align text to the left */
     color: #0a0a0a;
-    /* font: status-bar; */
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    /* Set color to a nice blue, you can adjust this */
 }
 
 .additional-element {

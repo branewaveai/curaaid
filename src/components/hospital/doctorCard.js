@@ -26,28 +26,27 @@ const DoctorCard = ({ doctorId, image, name, exp, degree, location }) => {
     <Card className="doctor-card" variant="outlined">
       <div className="doctor-card-image">
         <img src={image} alt="Doctor" className="doctor-image" />
-      </div>{" "}
-      {/* Details */}{" "}
+      </div>
       <CardContent className="doctor-card-details">
         <Typography variant="h6" component="div">
-          {" "}
-          {name}{" "}
-        </Typography>{" "}
+          
+          {name}
+        </Typography>
         <Typography color="textSecondary" gutterBottom>
-          {" "}
+          
           {exp}
-          years of experience{" "}
-        </Typography>{" "}
+          years of experience
+        </Typography>
         <Typography variant="body2" component="div">
-          {" "}
-          {degree}{" "}
-        </Typography>{" "}
+          
+          {degree}
+        </Typography>
         <Typography variant="body2" color="textSecondary" component="div">
-          {" "}
-          {location}{" "}
-        </Typography>{" "}
-      </CardContent>{" "}
-      {/* Actions (appointment button) */}{" "}
+          
+          {location}
+        </Typography>
+      </CardContent>
+      {/* Actions (appointment button) */}
       <CardActions>
         <Button
           fullWidth
@@ -56,9 +55,9 @@ const DoctorCard = ({ doctorId, image, name, exp, degree, location }) => {
           onClick={handleBookAppointmentClick}
           endIcon={<VideoCallIcon />}
         >
-          Book Appointment{" "}
-        </Button>{" "}
-      </CardActions>{" "}
+          Book Appointment
+        </Button>
+      </CardActions>
     </Card>
   );
 };
