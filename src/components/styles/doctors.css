@@ -2,7 +2,7 @@
 
 .horizontal-scrollable-list {
     display: flex;
-    overflow-x: auto;
+    /* overflow-x: auto; */
     padding: 0px;
 }
 

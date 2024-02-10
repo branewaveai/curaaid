@@ -24,6 +24,11 @@ a {
 /* navbar */
 
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* Center the navbar horizontally */
     background-color: #f0f8ff;
     padding: 10px 20px;
     display: flex;
@@ -31,9 +36,11 @@ a {
     align-items: center;
     gap: 40px;
     min-height: 70px;
-    position: relative;
     z-index: 2;
     font-family: 'Roboto Slab', serif;
+    width: 100%;
+    box-sizing: border-box;
+    /* Include padding and borders in the total width and height */
 }
 
 
@@ -153,6 +160,9 @@ a {
     border-radius: 5px;
     /* Add border-radius for rounded corners */
     cursor: pointer;
+    @media screen and (max-width: 781px) {
+        margin-right: 0px;
+    }
 }
 
 @media screen and (min-width: 781px) {

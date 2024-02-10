@@ -195,7 +195,7 @@ const HorizontalScrollableDoctorList = ({ doctorsToShowPerPage }) => {
       location: "Delhi",
     },
   ];
-  const itemsPerPage =  doctorsToShowPerPage || 4;
+  const itemsPerPage = doctorsToShowPerPage || 4;
   const [currentPage, setCurrentPage] = useState(1);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [currentDoctors, setCurrentDoctors] = useState([]);
@@ -271,7 +271,7 @@ const HorizontalScrollableDoctorList = ({ doctorsToShowPerPage }) => {
       </div>{" "}
       <div className="pagination">
         <button onClick={handlePrevPage} disabled={currentPage === 1}>
-          &lt; Prev{" "}
+          & lt; Prev{" "}
         </button>{" "}
         {Array.from({ length: totalPages }, (_, index) => (
           <button
@@ -283,7 +283,7 @@ const HorizontalScrollableDoctorList = ({ doctorsToShowPerPage }) => {
           </button>
         ))}{" "}
         <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-          Next &gt;{" "}
+          Next & gt;{" "}
         </button>{" "}
       </div>{" "}
     </div>
