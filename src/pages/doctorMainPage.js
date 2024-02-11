@@ -32,7 +32,7 @@ const DoctorListPage = ({ doctorList }) => {
   };
 
   return (
-    <Container>
+    <Container style={{marginTop:'140px'}}>
       
       {/* Search options */}
       <Typography variant="h5" align="center" gutterBottom>
@@ -46,7 +46,7 @@ const DoctorListPage = ({ doctorList }) => {
       <Grid container spacing={2}>
         
         {filteredDoctorList.map((doctor, index) => (
-          <Grid key={index} item xs={12} sm={6} md={6} lg={6} xl={6}>
+          <Grid key={index} item xs={12} sm={12} md={12} lg={12} xl={12}>
             <DetailedDoctorCard doctor={doctor} />
           </Grid>
         ))}

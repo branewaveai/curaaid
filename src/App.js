@@ -9,8 +9,9 @@ import Blogs from "./pages/blogs";
 import Dashboard from "./pages/dashboard";
 // import Doctors from "./pages/doctorsList";
 import Doctors from "../src/pages/doctorMainPage";
+import "./App.css";
 import Hospitals from "./pages/hospitals";
-import Treatments from "./pages/treatments";
+import Treatments from "./pages/treatment1";
 import ProtectedRoute from "./privateRoute";
 import DoctorAppointments from "./signup/appointment";
 import SignUp from "./signup/signup";
@@ -221,7 +222,7 @@ function App() {
         <Route path="/home" element={<Home />} />{" "}
         <Route path="/treatments" element={<Treatments />} />{" "}
         <Route path="/hospitals" element={<Hospitals />} />{" "}
-        <Route path="/doctors" element={<Doctors  doctorList={doctorList}/>} />{" "}
+        <Route path="/doctors" element={<Doctors doctorList={doctorList} />} />{" "}
         <Route path="/blogs" element={<Blogs />} />{" "}
         <Route path="/login" element={<Login />} />{" "}
         <Route path="/signup" element={<SignUp />} />{" "}
@@ -229,7 +230,7 @@ function App() {
           path="/doctors/:doctorId/appointments"
           element={<DoctorAppointments />}
         />{" "}
-        <Route path="/appointments" element={<DoctorAppointments />} />
+        <Route path="/appointments" element={<DoctorAppointments />} />{" "}
         {/* Protected Routes */}{" "}
         <Route
           path="/dashboard"

@@ -178,7 +178,7 @@ const QuarterBlock = styled(BlockContainer)`
   flex: 1;
   width: 100%;
   height: 125px;
-  border: 2px solid #ddd;
+  // border: 2px solid #ddd;
   margin-bottom: 0px;
   margin-top: 0px;
   border-radius: 5px;
@@ -235,7 +235,9 @@ const TopPage = () => {
                 height: "100px",
               }}
             >
-              <QuarterBlock>
+            <Paper elevation={3} style={{width:'45%',margin:'5px'}}>
+            <QuarterBlock>
+              
                 <IconLink
                   href="https://www.linkedin.com/company/curaaid/"
                   target="_blank"
@@ -246,13 +248,17 @@ const TopPage = () => {
                   </IconContainer>
                 </IconLink>
               </QuarterBlock>
-              <QuarterBlock>
+            </Paper>
+            <Paper elevation={3} style={{width:'45%', margin:'5px'}}>
+            <QuarterBlock>
                 <IconLink href="https://www.linkedin.com/company/curaaid/">
                   <IconContainer>
                     <FaInstagram size={50} color="#ED2285" />
                   </IconContainer>
                 </IconLink>
               </QuarterBlock>
+            </Paper>
+              
             </div>
             <Block1>
             <span >Video Testomonials</span>

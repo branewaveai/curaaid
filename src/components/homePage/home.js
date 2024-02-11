@@ -3,9 +3,11 @@ import { Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import backgroundImage from "../../assets/icons/Bg1.png";
 import DoctorList from "../../pages/doctorsList";
+import Footer from "../../pages/footer";
 import Feature from "./Features";
 import "./home.css";
 import SearchBar from "./serchBar";
+import Testimonials from "./testimonials";
 import TopPage from "./topPage";
 import Treatment from "./treatments";
 const Home = () => {
@@ -69,10 +71,12 @@ const Home = () => {
             <DoctorList />
           </Grid>
         </Grid>
+        <Testimonials/>
         {/* Additional element */}
         <div className="additional-element">
           <Typography> This is an additional element. </Typography>
         </div>
+        <Footer/>
       </div>
     </>
   );
