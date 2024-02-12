@@ -8,8 +8,10 @@ body {
     /* background-color: #a8b8c8; */
 }
 
-.background {
+
+/* .background {
     position: absolute;
+    margin-top: 140px;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
@@ -17,7 +19,17 @@ body {
     width: 90%;
     height: 100%;
     z-index: -1;
-    /* Ensure it's behind other content */
+    
+    background-size: cover;
+    background-position: center;
+} */
+
+.background {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 140px);
+    z-index: -1;
     background-size: cover;
     background-position: center;
 }

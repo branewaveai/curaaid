@@ -217,26 +217,26 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        {" "}
-        {/* Public Routes */} <Route path="/" element={<Home />} />{" "}
-        <Route path="/home" element={<Home />} />{" "}
-        <Route path="/treatments" element={<Treatments />} />{" "}
-        <Route path="/hospitals" element={<Hospitals />} />{" "}
-        <Route path="/doctors" element={<Doctors doctorList={doctorList} />} />{" "}
-        <Route path="/blogs" element={<Blogs />} />{" "}
-        <Route path="/login" element={<Login />} />{" "}
-        <Route path="/signup" element={<SignUp />} />{" "}
+        
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/treatments" element={<Treatments />} />
+        <Route path="/hospitals" element={<Hospitals />} />
+        <Route path="/doctors" element={<Doctors doctorList={doctorList} />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route
           path="/doctors/:doctorId/appointments"
           element={<DoctorAppointments />}
-        />{" "}
-        <Route path="/appointments" element={<DoctorAppointments />} />{" "}
-        {/* Protected Routes */}{" "}
+        />
+        <Route path="/appointments" element={<DoctorAppointments />} />
+        {/* Protected Routes */}
         <Route
           path="/dashboard"
           element={<ProtectedRoute element={<Dashboard />} />}
         />
-      </Routes>{" "}
+      </Routes>
     </Router>
   );
 }

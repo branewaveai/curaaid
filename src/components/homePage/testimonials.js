@@ -7,41 +7,43 @@ const Testimonials = () => {
   // Dummy data for testimonials
   const testimonialsData = [
     {
-      text:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       name: "John Doe",
-      logo: "user1_logo.png",
+      logo: "https://media.istockphoto.com/id/1354174619/photo/smiling-young-woman-with-curly-hear-and-clear-skin.jpg?s=612x612&w=0&k=20&c=8FTIrD2HxeMXcyFbsCU56ZfRow9O6pRjwEAbvZBSU7A=",
+      treatment:"Cardiology",
     },
     {
-      text:
-        "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       name: "Jane Smith",
-      logo: "user2_logo.png",
+      logo: "https://media.istockphoto.com/id/1354174619/photo/smiling-young-woman-with-curly-hear-and-clear-skin.jpg?s=612x612&w=0&k=20&c=8FTIrD2HxeMXcyFbsCU56ZfRow9O6pRjwEAbvZBSU7A=",
+      treatment:"Cardiology",
     },
     {
-      text:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      text: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
       name: "Alex Johnson",
-      logo: "user3_logo.png",
+      logo: "https://media.istockphoto.com/id/1354174619/photo/smiling-young-woman-with-curly-hear-and-clear-skin.jpg?s=612x612&w=0&k=20&c=8FTIrD2HxeMXcyFbsCU56ZfRow9O6pRjwEAbvZBSU7A=",
+      treatment:"Cardiology",
     },
   ];
 
   return (
     <div className="testimonials-container">
-      <h2 className="testimonials-heading">Testimonials</h2>
-      <p className="sub-heading">See what our customers are saying</p>
+      <h2 className="testimonials-heading"> Testimonials </h2>
+      <p className="sub-heading"> See what our customers are saying </p>
       <div className="testimonials-list">
+        
         {testimonialsData.map((testimonial, index) => (
           <div className="testimonial-item" key={index}>
             <FontAwesomeIcon icon={faQuoteLeft} className="quote-icon" />
-            <p className="testimonial-text">{testimonial.text}</p>
+            <p className="testimonial-text"> {testimonial.text} </p>
             <div className="testimonial-signature">
-              <p className="testimonial-author">{testimonial.name}</p>
               <img
                 src={testimonial.logo}
                 alt={testimonial.name}
                 className="testimonial-logo"
               />
+              <p className="testimonial-author"> {testimonial.name} </p>
+              <p>{testimonial.treatment}</p>
             </div>
           </div>
         ))}

@@ -38,6 +38,36 @@ const TreatmentPage = () => {
           { description: "ASD Closure 8" }
         ] 
       },
+      { 
+        id: 3, 
+        name: "Treatment 3", 
+        description: "Description of Treatment 1", 
+        asdClosures: [
+          { description: "ASD Closure 1" },
+          { description: "ASD Closure 2" },
+          { description: "ASD Closure 3" },
+          { description: "ASD Closure 4" },
+          { description: "ASD Closure 5" },
+          { description: "ASD Closure 6" },
+          { description: "ASD Closure 7" },
+          { description: "ASD Closure 8" }
+        ] 
+      },
+      { 
+        id: 4, 
+        name: "Treatment 4", 
+        description: "Description of Treatment 1", 
+        asdClosures: [
+          { description: "ASD Closure 1" },
+          { description: "ASD Closure 2" },
+          { description: "ASD Closure 3" },
+          { description: "ASD Closure 4" },
+          { description: "ASD Closure 5" },
+          { description: "ASD Closure 6" },
+          { description: "ASD Closure 7" },
+          { description: "ASD Closure 8" }
+        ] 
+      },
       // Add more treatments as needed
     ];
 
@@ -62,7 +92,10 @@ const TreatmentPage = () => {
           </Paper>
         </div>
       ))}
-      <Footer/>
+      <div style={{width:'70%'}}>
+      <Footer />
+      </div>
+      
     </div>
   );
 };

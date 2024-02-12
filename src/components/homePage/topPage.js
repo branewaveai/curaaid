@@ -167,7 +167,8 @@ const ImageCover = styled.div`
 //   justify-content: normal;
 // `;
 const Block1 = styled(BlockContainer)`
-  border: 1px solid #ddd;
+  // border: 1px solid #ddd;
+  fontSize: 1rem;
   width: 97%;
   height: 55%;
   border-radius: 5px;
@@ -260,12 +261,18 @@ const TopPage = () => {
             </Paper>
               
             </div>
+            <Paper elevation={3} style={{width:'95%', height:'50%',fontFamily: "Roboto Slab, serif",fontSize: "0.9rem",}}>
             <Block1>
-            <span >Video Testomonials</span>
+            <span style={{
+              fontSize: "1.3rem",
+              textAlign: "left",
+              marginBottom: "5px",
+            }}>Video Testomonials</span>
               Random Text Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit. Sed vitae mauris nec ligula tempus condimentum. Fusce
-              suscipit libero ac ligula vulputate,
+              elit. Sed vitae mauris nec ligula tempus condimentum.
             </Block1>
+            </Paper>
+            
           </div>
           <Block
             style={{

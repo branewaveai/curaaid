@@ -4,6 +4,7 @@ import React from "react";
 import backgroundImage from "../../assets/icons/Bg1.png";
 import DoctorList from "../../pages/doctorsList";
 import Footer from "../../pages/footer";
+import HospiList from "../hospital/hospiCardList";
 import Feature from "./Features";
 import "./home.css";
 import SearchBar from "./serchBar";
@@ -28,9 +29,9 @@ const Home = () => {
             variant="h2"
             style={{
               fontFamily: "Roboto Slab, serif",
-              fontSize: "2.5rem", // Default font size
+              fontSize: "2.5rem",
               textAlign: "center",
-              marginBottom: "20px", // Adjust margin bottom for spacing
+              marginBottom: "20px",
             }}
           >
             <span> Unveiling our </span> <br />
@@ -68,7 +69,7 @@ const Home = () => {
           </Grid>
           <Grid item xs={12}>
             <Typography variant="h4"> Our Hospitals </Typography>
-            <DoctorList />
+            <HospiList doctorsToShowPerPage={4} />
           </Grid>
         </Grid>
         <Testimonials/>

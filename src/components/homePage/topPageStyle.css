@@ -14,7 +14,6 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    /* Ensure each column takes full width on smaller screens */
 }
 
 .image {
