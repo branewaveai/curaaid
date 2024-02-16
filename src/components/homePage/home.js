@@ -73,10 +73,10 @@ const Home = () => {
           </Grid>
         </Grid>
         <Testimonials/>
-        {/* Additional element */}
-        <div className="additional-element">
+        
+        {/*<div className="additional-element">
           <Typography> This is an additional element. </Typography>
-        </div>
+          </div>*/}
         <Footer/>
       </div>
     </>

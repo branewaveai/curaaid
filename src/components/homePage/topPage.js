@@ -1,4 +1,4 @@
-import Paper from '@mui/material/Paper';
+import Paper from "@mui/material/Paper";
 import React from "react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import styled from "styled-components";
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   display: grid;
   // border: 2px solid #ddd;
   grid-template-columns: 1fr 1fr;
-  max-width: 1200px;
+  max-width: 1300px;
   height: 600px;
   // position: relative;
   margin: 0;
@@ -109,7 +109,7 @@ const Block = styled.div`
   align-items: center;
   justify-content: normal;
   border-radius: 5px;
-  background-color: #10D6D6;
+  background-color: #10d6d6;
 `;
 
 // const Block = styled(BlockContainer)`
@@ -168,7 +168,7 @@ const ImageCover = styled.div`
 // `;
 const Block1 = styled(BlockContainer)`
   // border: 1px solid #ddd;
-  fontSize: 1rem;
+  fontsize: 1rem;
   width: 97%;
   height: 55%;
   border-radius: 5px;
@@ -194,32 +194,34 @@ const TopPage = () => {
       <ImageBlock>
         <ImageContent src={coverImage1} alt="Image" className="img" />
       </ImageBlock>
-
       <FlexContainer>
         <Block>
-          Another BlockLorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Sed vitae mauris nec ligula tempus condimentum. Fusce suscipit libero
-          ac ligula vulputate, vitae Random Text Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Sed vitae mauris nec ligula tempus
-          condimentum. Fusce suscipit libero ac ligula vulputate, vitae Random
-          Text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-          vitae mauris nec ligula Random Text Lorem ipsum dolor sit amet,{" "}
-        </Block>
+          Another BlockLorem ipsum dolor sit amet, consectetur adipiscing
+          elit.Sed vitae mauris nec ligula tempus condimentum.Fusce suscipit
+          libero ac ligula vulputate, vitae Random Text Lorem ipsum dolor sit
+          amet, consectetur adipiscing elit.Sed vitae mauris nec ligula tempus
+          condimentum.Fusce suscipit libero ac ligula vulputate, vitae Random
+          Text Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed vitae
+          mauris nec ligula Random Text Lorem ipsum dolor sit amet,{" "}
+        </Block>{" "}
         <div style={{ flex: 1 }}>
           <HalfBlock>
-          <Paper elevation={3} style={{height:'100%'}}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae
-            mauris nec ligula tempus condimentum. Fusce suscipit libero ac
-            ligula vulputate, vitae</Paper>
+            <Paper elevation={3} style={{ height: "100%" }}>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed vitae
+              mauris nec ligula tempus condimentum.Fusce suscipit libero ac
+              ligula vulputate, vitae{" "}
+            </Paper>{" "}
           </HalfBlock>
-          
           <HalfBlock>
-          <Paper elevation={3} style={{height:'100%'}}>Random Text Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Sed vitae mauris nec ligula tempus condimentum. Fusce suscipit
-            libero ac ligula vulputate, vitae</Paper>
-          </HalfBlock>
-        </div>
-      </FlexContainer>
+            <Paper elevation={3} style={{ height: "100%" }}>
+              {" "}
+              Random Text Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit.Sed vitae mauris nec ligula tempus condimentum.Fusce suscipit
+              libero ac ligula vulputate, vitae{" "}
+            </Paper>{" "}
+          </HalfBlock>{" "}
+        </div>{" "}
+      </FlexContainer>{" "}
       <BlockContainer
         style={{
           marginTop: "-30px",
@@ -236,44 +238,54 @@ const TopPage = () => {
                 height: "100px",
               }}
             >
-            <Paper elevation={3} style={{width:'45%',margin:'5px'}}>
-            <QuarterBlock>
-              
-                <IconLink
-                  href="https://www.linkedin.com/company/curaaid/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+              <Paper elevation={3} style={{ width: "45%", margin: "5px" }}>
+                <QuarterBlock>
+                  <IconLink
+                    href="https://www.linkedin.com/company/curaaid/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <IconContainer>
+                      <FaLinkedin size={50} color="#0077B5" />
+                    </IconContainer>{" "}
+                  </IconLink>{" "}
+                </QuarterBlock>{" "}
+              </Paper>{" "}
+              <Paper elevation={3} style={{ width: "45%", margin: "5px" }}>
+                <QuarterBlock>
+                  <IconLink href="https://www.linkedin.com/company/curaaid/">
+                    <IconContainer>
+                      <FaInstagram size={50} color="#ED2285" />
+                    </IconContainer>{" "}
+                  </IconLink>{" "}
+                </QuarterBlock>{" "}
+              </Paper>
+            </div>{" "}
+            <Paper
+              elevation={3}
+              style={{
+                width: "95%",
+                height: "50%",
+                fontFamily: "Roboto Slab, serif",
+                fontSize: "0.9rem",
+              }}
+            >
+              <Block1>
+                <span
+                  style={{
+                    fontSize: "1.3rem",
+                    textAlign: "left",
+                    marginBottom: "5px",
+                  }}
                 >
-                  <IconContainer>
-                    <FaLinkedin size={50} color="#0077B5" />
-                  </IconContainer>
-                </IconLink>
-              </QuarterBlock>
+                  {" "}
+                  Video Testomonials{" "}
+                </span>
+                Random Text Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit.Sed vitae mauris nec ligula tempus condimentum.{" "}
+              </Block1>{" "}
             </Paper>
-            <Paper elevation={3} style={{width:'45%', margin:'5px'}}>
-            <QuarterBlock>
-                <IconLink href="https://www.linkedin.com/company/curaaid/">
-                  <IconContainer>
-                    <FaInstagram size={50} color="#ED2285" />
-                  </IconContainer>
-                </IconLink>
-              </QuarterBlock>
-            </Paper>
-              
-            </div>
-            <Paper elevation={3} style={{width:'95%', height:'50%',fontFamily: "Roboto Slab, serif",fontSize: "0.9rem",}}>
-            <Block1>
-            <span style={{
-              fontSize: "1.3rem",
-              textAlign: "left",
-              marginBottom: "5px",
-            }}>Video Testomonials</span>
-              Random Text Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit. Sed vitae mauris nec ligula tempus condimentum.
-            </Block1>
-            </Paper>
-            
-          </div>
+          </div>{" "}
           <Block
             style={{
               flex: 1,
@@ -283,14 +295,14 @@ const TopPage = () => {
             }}
           >
             Another Block Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Sed vitae mauris nec ligula tempus condimentum. Fusce suscipit
-            libero ac ligula vulputate, vitae
-          </Block>
-        </div>
-      </BlockContainer>
+            elit.Sed vitae mauris nec ligula tempus condimentum.Fusce suscipit
+            libero ac ligula vulputate, vitae{" "}
+          </Block>{" "}
+        </div>{" "}
+      </BlockContainer>{" "}
       <ImageCover style={{ marginTop: "10px", height: "280px" }}>
         <ImageContent src={CoverImage2} alt="Image" className="img" />
-      </ImageCover>
+      </ImageCover>{" "}
     </Wrapper>
   );
 };
