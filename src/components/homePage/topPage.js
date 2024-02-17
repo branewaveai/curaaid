@@ -2,7 +2,7 @@ import Paper from "@mui/material/Paper";
 import React from "react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import styled from "styled-components";
-import CoverImage2 from "../../assets/icons/CoverImage2.png";
+import CoverImage2 from "../../assets/icons/CoverImage2.svg";
 import coverImage1 from "../../assets/icons/coverImage1.png";
 
 const IconLink = styled.a`
@@ -196,6 +196,7 @@ const StyledNumber = styled.div`
   font-size: 50px;
   line-height: 67px;
   color: #000000;
+  padding:'10px';
 `;
 
 const StyledText = styled.div`
@@ -204,6 +205,7 @@ const StyledText = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 21px;
+  margin-top:'10px';
   letter-spacing: 0.04em;
   color: #000000;
 `;
@@ -217,15 +219,15 @@ const TopPage = () => {
     <Wrapper>
       <ImageBlock>
         <ImageContent src={coverImage1} alt="Image" className="img" />
-      </ImageBlock>{" "}
+      </ImageBlock>
       <FlexContainer>
         <Block>
           Another BlockLorem ipsum dolor sit amet, consectetur adipiscing
           elit.Sed vitae mauris nec ligula tempus condimentum.Fusce suscipit
           libero ac ligula vulputate, vitae Random Text Lorem ipsum dolor sit
           amet, consectetur adipiscing elit.Sed vitae mauris nec ligula tempus
-          condimentum.Fusce suscipit libero ac .
-        </Block>{" "}
+          condimentum.Fusce suscipit libero ac.
+        </Block>
         <div style={{ flex: 1 }}>
           <HalfBlock>
             <Paper
@@ -237,22 +239,27 @@ const TopPage = () => {
                 justifyContent: "center",
               }}
             >
+              <StyledTextContainer>
+                <StyledNumber style={{marginBottom:"10px"}}> 10 </StyledNumber>
+                <StyledText> Countries Reached </StyledText>
+              </StyledTextContainer>
+            </Paper>
+          </HalfBlock>
+          <HalfBlock>
+            <Paper elevation={3} style={{
+              width: "100%",
+              height: "100%",
+              alignItems: "center",
+              justifyContent: "center",
+            }}>
             <StyledTextContainer>
-            <StyledNumber>10</StyledNumber>
-            <StyledText>Countries Reached</StyledText>
+            <StyledNumber style={{marginBottom:"10px"}}> 18 </StyledNumber>
+            <StyledText> Doctors Tied Up</StyledText>
           </StyledTextContainer>
             </Paper>
-          </HalfBlock>{" "}
-          <HalfBlock>
-            <Paper elevation={3} style={{ height: "100%" }}>
-              {" "}
-              Random Text Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit.Sed vitae mauris nec ligula tempus condimentum.Fusce suscipit
-              libero ac ligula vulputate, vitae{" "}
-            </Paper>{" "}
-          </HalfBlock>{" "}
-        </div>{" "}
-      </FlexContainer>{" "}
+          </HalfBlock>
+        </div>
+      </FlexContainer>
       <BlockContainer
         style={{
           marginTop: "-45px",
@@ -278,20 +285,20 @@ const TopPage = () => {
                   >
                     <IconContainer>
                       <FaLinkedin size={50} color="#0077B5" />
-                    </IconContainer>{" "}
-                  </IconLink>{" "}
-                </QuarterBlock>{" "}
-              </Paper>{" "}
+                    </IconContainer>
+                  </IconLink>
+                </QuarterBlock>
+              </Paper>
               <Paper elevation={3} style={{ width: "45%", margin: "5px" }}>
                 <QuarterBlock>
                   <IconLink href="https://www.linkedin.com/company/curaaid/">
                     <IconContainer>
                       <FaInstagram size={50} color="#ED2285" />
-                    </IconContainer>{" "}
-                  </IconLink>{" "}
-                </QuarterBlock>{" "}
-              </Paper>{" "}
-            </div>{" "}
+                    </IconContainer>
+                  </IconLink>
+                </QuarterBlock>
+              </Paper>
+            </div>
             <Paper
               elevation={3}
               style={{
@@ -309,14 +316,14 @@ const TopPage = () => {
                     marginBottom: "5px",
                   }}
                 >
-                  {" "}
-                  Video Testomonials{" "}
+                  
+                  Video Testomonials
                 </span>
                 Random Text Lorem ipsum dolor sit amet, consectetur adipiscing
                 elit.Sed vitae mauris.
-              </Block1>{" "}
-            </Paper>{" "}
-          </div>{" "}
+              </Block1>
+            </Paper>
+          </div>
           <Block
             style={{
               marginTop: "5px",
@@ -328,13 +335,13 @@ const TopPage = () => {
           >
             Another Block Lorem ipsum dolor sit amet, consectetur adipiscing
             elit.Sed vitae mauris nec ligula tempus condimentum.Fusce suscipit
-            libero ac ligula vulputate, vitae{" "}
-          </Block>{" "}
-        </div>{" "}
-      </BlockContainer>{" "}
+            libero ac ligula vulputate, vitae
+          </Block>
+        </div>
+      </BlockContainer>
       <ImageCover style={{ marginTop: "", height: "280px" }}>
         <ImageContent src={CoverImage2} alt="Image" className="img" />
-      </ImageCover>{" "}
+      </ImageCover>
     </Wrapper>
   );
 };
