@@ -23,6 +23,16 @@
     margin-bottom: 10px;
 }
 
+.block-container {
+    margin-top: -45px!important;
+    height: 320px;
+}
+
+.banner23-img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
 @media screen and (min-width: 768px) {
     .template-container {
         flex-direction: row;

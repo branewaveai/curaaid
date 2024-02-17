@@ -1,8 +1,8 @@
 // Import necessary dependencies
 import {
-    Card,
-    CardContent,
-    Typography
+  Card,
+  CardContent,
+  Typography
 } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -18,9 +18,9 @@ const HospitalCard = ({hospitalId, image, name, estd, location}) => {
   };
 
   return (
-    <Card className="doctor-card" variant="outlined">
+    <Card className="doctor-card" variant="outlined" >
       <div className="doctor-card-image">
-        <img src={image} alt="Doctor" className="doctor-image" />
+        <img src={image} alt="Doctor" className="doctor-image"  />
       </div>
       <CardContent className="doctor-card-details">
         <Typography variant="h6" component="div">

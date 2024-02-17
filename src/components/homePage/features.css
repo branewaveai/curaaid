@@ -2,6 +2,8 @@
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    background-color: #F3FDF7;
+    z-index: 10;
 }
 
 .feature-heading {

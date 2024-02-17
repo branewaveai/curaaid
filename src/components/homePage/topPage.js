@@ -40,8 +40,10 @@ const BlockContainer = styled.div`
   width: 100%;
   align-items: stretch; /* Ensure children stretch to full width */
   justify-content: space-between; /* Distribute space evenly between children */
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    margin-top: 0 !important;
   }
 `;
 // const ImageBlock = styled(BlockContainer)`
@@ -187,31 +189,60 @@ const QuarterBlock = styled(BlockContainer)`
   justify-content: center; /* horizontally center */
   align-items: center; /* vertically center */
 `;
+const StyledNumber = styled.div`
+  font-family: "Playfair Display", serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 67px;
+  color: #000000;
+`;
+
+const StyledText = styled.div`
+  font-family: "Playfair Display", serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+  letter-spacing: 0.04em;
+  color: #000000;
+`;
+const StyledTextContainer = styled.div`
+  margin-left: 5px;
+  align-items: center;
+`;
 
 const TopPage = () => {
   return (
     <Wrapper>
       <ImageBlock>
         <ImageContent src={coverImage1} alt="Image" className="img" />
-      </ImageBlock>
+      </ImageBlock>{" "}
       <FlexContainer>
         <Block>
           Another BlockLorem ipsum dolor sit amet, consectetur adipiscing
           elit.Sed vitae mauris nec ligula tempus condimentum.Fusce suscipit
           libero ac ligula vulputate, vitae Random Text Lorem ipsum dolor sit
           amet, consectetur adipiscing elit.Sed vitae mauris nec ligula tempus
-          condimentum.Fusce suscipit libero ac ligula vulputate, vitae Random
-          Text Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed vitae
-          mauris nec ligula Random Text Lorem ipsum dolor sit amet,{" "}
+          condimentum.Fusce suscipit libero ac .
         </Block>{" "}
         <div style={{ flex: 1 }}>
           <HalfBlock>
-            <Paper elevation={3} style={{ height: "100%" }}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed vitae
-              mauris nec ligula tempus condimentum.Fusce suscipit libero ac
-              ligula vulputate, vitae{" "}
-            </Paper>{" "}
-          </HalfBlock>
+            <Paper
+              elevation={3}
+              style={{
+                width: "100%",
+                height: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+            <StyledTextContainer>
+            <StyledNumber>10</StyledNumber>
+            <StyledText>Countries Reached</StyledText>
+          </StyledTextContainer>
+            </Paper>
+          </HalfBlock>{" "}
           <HalfBlock>
             <Paper elevation={3} style={{ height: "100%" }}>
               {" "}
@@ -224,7 +255,7 @@ const TopPage = () => {
       </FlexContainer>{" "}
       <BlockContainer
         style={{
-          marginTop: "-30px",
+          marginTop: "-45px",
           height: "320px",
         }}
       >
@@ -259,7 +290,7 @@ const TopPage = () => {
                     </IconContainer>{" "}
                   </IconLink>{" "}
                 </QuarterBlock>{" "}
-              </Paper>
+              </Paper>{" "}
             </div>{" "}
             <Paper
               elevation={3}
@@ -282,12 +313,13 @@ const TopPage = () => {
                   Video Testomonials{" "}
                 </span>
                 Random Text Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit.Sed vitae mauris nec ligula tempus condimentum.{" "}
+                elit.Sed vitae mauris.
               </Block1>{" "}
-            </Paper>
+            </Paper>{" "}
           </div>{" "}
           <Block
             style={{
+              marginTop: "5px",
               flex: 1,
               fontSize: 12,
               fontFamily: "'Roboto Slab', serif",
@@ -300,7 +332,7 @@ const TopPage = () => {
           </Block>{" "}
         </div>{" "}
       </BlockContainer>{" "}
-      <ImageCover style={{ marginTop: "10px", height: "280px" }}>
+      <ImageCover style={{ marginTop: "", height: "280px" }}>
         <ImageContent src={CoverImage2} alt="Image" className="img" />
       </ImageCover>{" "}
     </Wrapper>

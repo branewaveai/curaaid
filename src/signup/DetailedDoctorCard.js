@@ -7,12 +7,10 @@ import {
   CardContent,
   CardMedia,
   Grid,
-  Typography
+  Typography,
 } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-// import "./detailDoctorStyles.js";
-
 const DetailedDoctorCard = ({ doctor }) => {
   const { name, image, exp, degree, patientsConsulted } = doctor;
   const navigate = useNavigate();
@@ -33,7 +31,6 @@ const DetailedDoctorCard = ({ doctor }) => {
       }}
     >
       <Grid container spacing={4}>
-        {/* Left Image */}
         <Grid item xs={12} sm={2}>
           <CardMedia
             component="img"
@@ -50,20 +47,19 @@ const DetailedDoctorCard = ({ doctor }) => {
               borderRadius: 4,
             }}
             image={image}
-          />
+          />{" "}
         </Grid>
-
-        {/* Middle Content */}
+        {/* Middle Content */}{" "}
         <Grid item xs={8} sm={10}>
           <CardContent>
-            <Typography variant="h4">{name}</Typography>
+            <Typography variant="h4"> {name} </Typography>{" "}
             <Typography variant="h6" color="textSecondary" paragraph my={1}>
-              Neurolgist
-            </Typography>
+              Neurolgist{" "}
+            </Typography>{" "}
             <Typography variant="body2" color="textSecondary" paragraph>
-              {degree}
+              {" "}
+              {degree}{" "}
             </Typography>
-
             <div
               style={{
                 display: "flex",
@@ -78,10 +74,9 @@ const DetailedDoctorCard = ({ doctor }) => {
                 color="textSecondary"
                 style={{ marginLeft: 5 }}
               >
-                Fortis Hospital, Bangalore
-              </Typography>
+                Fortis Hospital, Bangalore{" "}
+              </Typography>{" "}
             </div>
-
             <div
               style={{
                 display: "flex",
@@ -96,41 +91,41 @@ const DetailedDoctorCard = ({ doctor }) => {
                 color="textSecondary"
                 style={{ marginLeft: 5 }}
               >
-                {`${exp} years of experience`}
-              </Typography>
-            </div>
+                {`${exp} years of experience`}{" "}
+              </Typography>{" "}
+            </div>{" "}
             {/* Add more content as needed, e.g., awards */}
-
-            {/* Last Layout */}
+            {/* Last Layout */}{" "}
             <div style={{ display: "flex", alignItems: "center" }}>
+              {" "}
               {/* <PatientsIcon color="primary" />
-              <Typography
-                variant="body2"
-                color="textSecondary"
-                style={{ marginLeft: 5, marginRight: 20 }}
-              >
-                {`${patientsConsulted} patients consulted`}
-              </Typography> */}
+                          <Typography
+                            variant="body2"
+                            color="textSecondary"
+                            style={{ marginLeft: 5, marginRight: 20 }}
+                          >
+                            {`${patientsConsulted} patients consulted`}
+                          </Typography> */}{" "}
               <CurrencyRupee color="primary" />
               <Typography
                 variant="body1"
                 color="black"
                 style={{ marginLeft: 5 }}
               >
-                <b>2000</b> for Video consultation
-              </Typography>
-            </div>
-          </CardContent>
+                <b> 2000 </b> for Video consultation{" "}
+              </Typography>{" "}
+            </div>{" "}
+          </CardContent>{" "}
           <Button
             style={{ marginLeft: 10 }}
             variant="contained"
             color="primary"
             onClick={handleBookAppointmentClick}
           >
-            Book Appointment
-          </Button>
-        </Grid>
-      </Grid>
+            Book Appointment{" "}
+          </Button>{" "}
+        </Grid>{" "}
+      </Grid>{" "}
     </Card>
   );
 };

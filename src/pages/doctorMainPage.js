@@ -1,7 +1,7 @@
 import { Container, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import DetailedDoctorCard from "../signup/DetailedDoctorCard";
-
+import Footer from "./footer";
 const DoctorListPage = ({ doctorList }) => {
   // State for search filters
   const [specialty, setSpecialty] = useState("");
@@ -32,14 +32,12 @@ const DoctorListPage = ({ doctorList }) => {
   };
 
   return (
+    <>
+    <div>
     <Container style={{marginTop:'140px'}}>
-      
-      {/* Search options */}
       <Typography variant="h5" align="center" gutterBottom>
-        Search Options
+        
       </Typography>
-      {/* Implement your search options component here */}
-      {/* Doctor list */}
       <Typography variant="h5" align="center" gutterBottom>
         Doctor List
       </Typography>
@@ -66,11 +64,10 @@ const DoctorListPage = ({ doctorList }) => {
           Next
         </button>
       </div>
-      {/* Footer content */}
-      <Typography variant="body1" align="center" gutterBottom>
-        Footer content goes here
-      </Typography>
     </Container>
+    <Footer/>
+    </div>
+    </>
   );
 };
 
