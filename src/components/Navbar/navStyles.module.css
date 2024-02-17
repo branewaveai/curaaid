@@ -43,6 +43,13 @@ a {
     /* Include padding and borders in the total width and height */
 }
 
+.leftNav {
+    margin-left: 100px;
+    @media screen and (max-width: 781px) {
+        margin-left: 0px;
+    }
+}
+
 
 /* logo */
 
@@ -150,15 +157,12 @@ a {
 } */
 
 .squareBox {
-    /* Styles for the square blue box */
     background-color: blue;
-    margin-right: 50px;
-    /* Change to your preferred blue color */
+    margin-right: 120px;
     color: white;
     padding: 10px 20px;
-    /* Adjust padding as needed */
+    height: 40px;
     border-radius: 5px;
-    /* Add border-radius for rounded corners */
     cursor: pointer;
     @media screen and (max-width: 781px) {
         margin-right: 0px;
@@ -168,11 +172,9 @@ a {
 @media screen and (min-width: 781px) {
     .navMenu {
         gap: 40px;
-        /* Adjust the gap as needed */
     }
     .loginLink {
         margin-left: 0;
-        /* Reset margin for larger screens */
     }
     .hamburger {
         display: none;

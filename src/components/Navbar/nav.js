@@ -42,7 +42,7 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    toast.success("Logout successful!");
+  {/*toast.success("Logout successful!");*/}
     dispatch(setIsLoggedIn(false));
     localStorage.clear();
     localStorage.setItem("token", "");
@@ -123,13 +123,13 @@ function Navbar() {
           {isLoggedIn ? (
             <div>
               <IconButton
-                color="inherit"
+                color="blue"
                 aria-label="person icon"
                 onClick={handleMenuOpen}
                 style={{ display: "flex", alignItems: "center" }}
               >
-                <span>{localStorage.getItem("name")}</span>
                 <PersonIcon style={{ fontSize: "30px", color: "blue" }} />
+                <span >{localStorage.getItem("name")}</span>
               </IconButton>
               <Menu
                 id="simple-menu"

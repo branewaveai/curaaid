@@ -16,14 +16,9 @@
     color: #007bff;
 }
 
-
-/* Additional content styling */
-
 .additional-content {
     flex: 1;
-    /* Take remaining space */
     margin: 20px;
-    /* Adjusted margin */
 }
 
 
