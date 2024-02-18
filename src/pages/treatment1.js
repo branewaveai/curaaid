@@ -14,11 +14,9 @@ const TreatmentPage = () => {
     myHeaders.append('SessionToken',localStorage.getItem(CONST_KEYS.token) )
     console.log(tt);
     var reqJson = {
-      method: "POST",
+      method: "GET",
       headers: myHeaders,
-      body: JSON.stringify({
-        
-      }),
+      
     };
     doPostRequest(
       TreatmentsDetails,

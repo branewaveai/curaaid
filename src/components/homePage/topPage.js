@@ -4,7 +4,7 @@ import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import styled from "styled-components";
 import CoverImage2 from "../../assets/icons/CoverImage2.svg";
 import coverImage1 from "../../assets/icons/coverImage1.png";
-
+import "./topPage.css";
 const IconLink = styled.a`
   text-decoration: none;
   color: inherit;
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   // border: 2px solid #ddd;
   grid-template-columns: 1fr 1fr;
   max-width: 1300px;
-  height: 600px;
+  height: 550px;
   // position: relative;
   margin: 0;
   @media (max-width: 768px) {
@@ -196,7 +196,7 @@ const StyledNumber = styled.div`
   font-size: 50px;
   line-height: 67px;
   color: #000000;
-  padding:'10px';
+  padding: "10px";
 `;
 
 const StyledText = styled.div`
@@ -205,7 +205,7 @@ const StyledText = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 21px;
-  margin-top:'10px';
+  margin-top: "10px";
   letter-spacing: 0.04em;
   color: #000000;
 `;
@@ -215,6 +215,7 @@ const StyledTextContainer = styled.div`
 `;
 
 const TopPage = () => {
+  const patientsCnt = 100;
   return (
     <Wrapper>
       <ImageBlock>
@@ -222,11 +223,16 @@ const TopPage = () => {
       </ImageBlock>
       <FlexContainer>
         <Block>
-          Another BlockLorem ipsum dolor sit amet, consectetur adipiscing
-          elit.Sed vitae mauris nec ligula tempus condimentum.Fusce suscipit
-          libero ac ligula vulputate, vitae Random Text Lorem ipsum dolor sit
-          amet, consectetur adipiscing elit.Sed vitae mauris nec ligula tempus
-          condimentum.Fusce suscipit libero ac.
+          <div className="box-container">
+            <div className="number">100+</div>
+            <div className="text">Patients are treated</div>
+            <div className="description">
+              Lorem ipsum dolor sit amet consectetur. Est auctor commodo mauris
+              egestas. Orci viverra fames adipiscing vulputate. Lorem ipsum
+              dolor sit amet consectetur. Est auctor commodo mauris egestas.
+              Orci viverra fames adipiscing vulputate.
+            </div>
+          </div>
         </Block>
         <div style={{ flex: 1 }}>
           <HalfBlock>
@@ -240,22 +246,28 @@ const TopPage = () => {
               }}
             >
               <StyledTextContainer>
-                <StyledNumber style={{marginBottom:"10px"}}> 10 </StyledNumber>
+                <StyledNumber style={{ marginBottom: "10px" }}>10</StyledNumber>
                 <StyledText> Countries Reached </StyledText>
               </StyledTextContainer>
             </Paper>
           </HalfBlock>
           <HalfBlock>
-            <Paper elevation={3} style={{
-              width: "100%",
-              height: "100%",
-              alignItems: "center",
-              justifyContent: "center",
-            }}>
-            <StyledTextContainer>
-            <StyledNumber style={{marginBottom:"10px"}}> 18 </StyledNumber>
-            <StyledText> Doctors Tied Up</StyledText>
-          </StyledTextContainer>
+            <Paper
+              elevation={3}
+              style={{
+                width: "100%",
+                height: "100%",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <StyledTextContainer>
+                <StyledNumber style={{ marginBottom: "10px" }}>
+                  {" "}
+                  18{" "}
+                </StyledNumber>
+                <StyledText> Doctors Tied Up</StyledText>
+              </StyledTextContainer>
             </Paper>
           </HalfBlock>
         </div>
@@ -316,7 +328,6 @@ const TopPage = () => {
                     marginBottom: "5px",
                   }}
                 >
-                  
                   Video Testomonials
                 </span>
                 Random Text Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -329,17 +340,24 @@ const TopPage = () => {
               marginTop: "5px",
               flex: 1,
               fontSize: 12,
-              fontFamily: "'Roboto Slab', serif",
+              fontFamily: "Playfair Display",
               backgroundColor: "#09CE6C",
             }}
           >
-            Another Block Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit.Sed vitae mauris nec ligula tempus condimentum.Fusce suscipit
-            libero ac ligula vulputate, vitae
+            <div className="box-container">
+              <div className="number">100+</div>
+              <div className="text">Patients are treated</div>
+              <div className="description">
+                Lorem ipsum dolor sit amet consectetur. Est auctor commodo
+                mauris egestas. Orci viverra fames adipiscing vulputate. Lorem
+                ipsum dolor sit amet consectetur. Est auctor commodo mauris
+                egestas. Orci viverra fames adipiscing vulputate.
+              </div>
+            </div>
           </Block>
         </div>
       </BlockContainer>
-      <ImageCover style={{ marginTop: "", height: "280px" }}>
+      <ImageCover style={{ marginTop: "10px", height: "270px" }}>
         <ImageContent src={CoverImage2} alt="Image" className="img" />
       </ImageCover>
     </Wrapper>

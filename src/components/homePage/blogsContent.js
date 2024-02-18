@@ -14,7 +14,7 @@ const BlogsBanner = () => {
       <div
         style={{
           display: "flex",
-          width: "80%",
+          width: "77%",
           margin: "0 auto",
           justifyContent: "space-between",
         }}
