@@ -1,8 +1,11 @@
 import { Typography } from "@mui/material";
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import "./treatment.css"; // Import CSS file for styling
+
+
 const TreatmentComponent = () => {
-  // Dummy array of treatments
+  const navigate = useNavigate();
   const treatments = [
     { 
         id: 1, 
@@ -29,26 +32,24 @@ const TreatmentComponent = () => {
         title: "Treatment 2",
         details: "Details of Treatment 2"
     }
-];
-
-
-  // Function to render individual treatment item
+  ];
+  const NavigateToTreatments = () => {
+    console.log("I'm navigating to appointments");
+    navigate('/treatments');
+  };
   const renderTreatmentItem = (treatment) => (
     <div className="treatment-item" key={treatment.id}>
-    <Typography variant="h6" sx={{ textAlign: "center" }}>
-    {treatment.title}
+      <Typography variant="h6" sx={{ textAlign: "center" }}>
+        {treatment.title}
       </Typography>
-      
       <p className="treatment-details">{treatment.details}</p>
     </div>
   );
-
-  // Render only the first 4 treatment items
   const visibleTreatments = treatments.slice(0, 4);
 
   return (
     <div className="treatment-container">
-    <Typography variant="h4" sx={{ textAlign: "center" }}>
+      <Typography variant="h4" sx={{ textAlign: "center" }}>
         Treatments
         <span></span>
       </Typography>
@@ -59,7 +60,9 @@ const TreatmentComponent = () => {
         <div className="treatment-list">
           {visibleTreatments.map(renderTreatmentItem)}
         </div>
-        <button className="view-all-button">View All Treatments</button>
+        <button className="view-all-button" onClick={NavigateToTreatments}>
+          View All Treatments
+        </button>
       </div>
     </div>
   );
