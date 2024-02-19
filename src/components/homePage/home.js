@@ -21,7 +21,7 @@ const Home = () => {
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
         }}
-      ></div>{" "}
+      ></div>
       <Container className="container">
         <div style={{ maxWidth: "60%", margin: "0 auto", marginTop: "100px" }}>
           <Typography
@@ -34,8 +34,8 @@ const Home = () => {
             }}
           >
             <span> Unveiling our </span> <br />
-            <span> mission and vision </span>{" "}
-          </Typography>{" "}
+            <span> mission and vision </span>
+          </Typography>
           <Typography
             style={{
               fontFamily: "Roboto Slab, serif",
@@ -46,35 +46,35 @@ const Home = () => {
             <span>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed vitae
               mauris nec ligula tempus condimentum.Fusce suscipit libero ac
-              ligula vulputate, vitae{" "}
-            </span>{" "}
-          </Typography>{" "}
-        </div>{" "}
+              ligula vulputate, vitae
+            </span>
+          </Typography>
+        </div>
         <SearchBar />
         <Grid container spacing={2}>
-          <Grid item xs={12}></Grid>{" "}
-        </Grid>{" "}
+          <Grid item xs={12}></Grid>
+        </Grid>
         <TopPage />
-      </Container>{" "}
+      </Container>
       <Feature />
       <Treatment />
       <div style={{ backgroundColor: "#F3FDF7",justifyContent:'center', margin:'0 auto' }}>
         <div style={{width:'80%',margin:'0 auto' }}>
-          <Typography variant="h4"> Our Team of Expert Doctors </Typography>{" "}
-          <DoctorList doctorsToShowPerPage={4} />{" "}
+          <Typography variant="h4"> Our Team of Expert Doctors </Typography>
+          <DoctorList doctorsToShowPerPage={4} />
         </div>
       </div>
       <div className="content-wrapper">
-        <Grid container spacing={1}>
+        <Grid container spacing={1} style={{marginBottom:'100px'}}>
           {/*<Grid item xs={12}>
-            <Typography variant="h4"> Our Team of Expert Doctors </Typography>{" "}
-            <DoctorList doctorsToShowPerPage={4} />{" "}
-          </Grid>{" "}*/}
+            <Typography variant="h4"> Our Team of Expert Doctors </Typography>
+            <DoctorList doctorsToShowPerPage={4} />
+          </Grid>*/}
           <Grid item xs={12}>
-            <Typography variant="h4"> Our Hospitals </Typography>{" "}
-            <HospiList doctorsToShowPerPage={4} />{" "}
-          </Grid>{" "}
-        </Grid>{" "}
+            <Typography variant="h4"> Our Hospitals </Typography>
+            <HospiList doctorsToShowPerPage={4} />
+          </Grid>
+        </Grid>
         <Blogs />
         <Testimonials />
       </div>

@@ -92,7 +92,7 @@ const Signup = ({ history }) => {
           var signupResp = resp;
           if (signupResp.status === "SUCCESS") {
             console.log("Signup Succesfully");
-            isRegistered = true;
+           // isRegistered = true;
             console.log(isRegistered);
             if (isRegistered) {
               toast.success("You have been registered. Kindly login please", {
@@ -106,7 +106,6 @@ const Signup = ({ history }) => {
                 theme: "light",
               });
               console.log("aa gye idhr");
-              // Redirect to the login page after a successful registration
               navigate("/home");
               // history.push("/login");
             } else {
@@ -116,7 +115,6 @@ const Signup = ({ history }) => {
               // Redirect to the login page for an existing user
               history.push("/login");
             }
-            //sendOtpForverification(); we will call here for sending otp;
             // navigate("/home");
           } else {
             toast.error("Login Failed", {
@@ -168,7 +166,7 @@ const Signup = ({ history }) => {
       height="100vh"
       marginTop={-10}
     >
-      <img src={Logo} alt="Logo" style={styles.logo} />
+      <img src={Logo} alt="Logo" style={styles.logo} />{" "}
       <Box
         width={400}
         padding={3}
@@ -178,8 +176,8 @@ const Signup = ({ history }) => {
         textAlign="center"
       >
         <Typography variant="h5" gutterBottom>
-          Signup
-        </Typography>
+          Signup{" "}
+        </Typography>{" "}
         <TextField
           label="Full Name"
           type="text"
@@ -194,7 +192,7 @@ const Signup = ({ history }) => {
           margin="normal"
           style={{ backgroundColor: formData.country ? "#D3D3D3" : "white" }}
         >
-          <InputLabel id="select-country-label">Select Country</InputLabel>
+          <InputLabel id="select-country-label"> Select Country </InputLabel>{" "}
           <Select
             name="country"
             labelId="select-country-label"
@@ -203,17 +201,18 @@ const Signup = ({ history }) => {
             onChange={handleInputChange}
           >
             <MenuItem value="" disabled>
-              Select country
-            </MenuItem>
+              Select country{" "}
+            </MenuItem>{" "}
             {countrys.map((slot) => (
               <MenuItem key={slot.code} value={slot.code}>
                 <b style={{ fontSize: 16 }}>
-                  {slot.code} | {slot.name}
-                </b>
+                  {" "}
+                  {slot.code} | {slot.name}{" "}
+                </b>{" "}
               </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+            ))}{" "}
+          </Select>{" "}
+        </FormControl>{" "}
         <TextField
           label="Phone Number"
           type="tel"
@@ -222,49 +221,47 @@ const Signup = ({ history }) => {
           onChange={handleInputChange}
           style={{ width: "100%" }}
           margin="normal"
-        />
+        />{" "}
         {/* <TextField
-          label="Country"
-          type="text"
-          name="country"
-          value={formData.country}
-          onChange={handleInputChange}
-          style={{ width: "100%" }}
-          margin="normal"
-        /> */}
-
+                      label="Country"
+                      type="text"
+                      name="country"
+                      value={formData.country}
+                      onChange={handleInputChange}
+                      style={{ width: "100%" }}
+                      margin="normal"
+                    /> */}
         {/* <TextField
-          label="State"
-          type="text"
-          name="state"
-          value={formData.state}
-          onChange={handleInputChange}
-          style={{ width: "100%" }}
-          margin="normal"
-        />
-        <TextField
-          label="Pincode"
-          type="text"
-          name="pincode"
-          value={formData.pincode}
-          onChange={handleInputChange}
-          style={{ width: "100%" }}
-          margin="normal"
-        /> */}
+                      label="State"
+                      type="text"
+                      name="state"
+                      value={formData.state}
+                      onChange={handleInputChange}
+                      style={{ width: "100%" }}
+                      margin="normal"
+                    />
+                    <TextField
+                      label="Pincode"
+                      type="text"
+                      name="pincode"
+                      value={formData.pincode}
+                      onChange={handleInputChange}
+                      style={{ width: "100%" }}
+                      margin="normal"
+                    /> */}{" "}
         <Button
           variant="contained"
           color="primary"
           onClick={handleSignup}
           style={{ width: "100%", marginTop: "16px" }}
         >
-          Signup
-        </Button>
+          Signup{" "}
+        </Button>{" "}
         <p>
-          Already have an account? <Link to="/Login">Login here</Link>
-        </p>
-      </Box>
-      {/* ToastContainer for displaying toast messages */}
-      <ToastContainer />
+          Already have an account ? <Link to="/Login"> Login here </Link>{" "}
+        </p>{" "}
+      </Box>{" "}
+      {/* ToastContainer for displaying toast messages */} <ToastContainer />
     </Box>
   );
 };

@@ -175,8 +175,6 @@ const LoginDialog = ({ isOpen, onClose, onLogin }) => {
 
   return (
     <>
-      {/* Person icon and user name or login button */}
-      {/* Login Dialog */}
       <Dialog open={isOpen} onClose={onClose}>
         <DialogTitle sx={{ backgroundColor: "#f0f8ff", color: "black" }}>
           Login
