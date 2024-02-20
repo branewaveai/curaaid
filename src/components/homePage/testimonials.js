@@ -1,7 +1,7 @@
 import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import "./testimonials.css";
+import "./StyleHome/testimonials.css";
 
 const Testimonials = () => {
   // Dummy data for testimonials

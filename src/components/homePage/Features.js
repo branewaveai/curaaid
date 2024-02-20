@@ -6,7 +6,7 @@ import VehicleIcon from "../../assets/icons/Vehicle.svg";
 import VisaIcon from "../../assets/icons/Visa_travel.svg";
 import CareIcon from "../../assets/icons/care.svg";
 import Line_Icon from "../../assets/icons/line.svg";
-import "./features.css";
+import "./StyleHome/features.css";
 
 const Features = () => {
   const theme = useTheme();

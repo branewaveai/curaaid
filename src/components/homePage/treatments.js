@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-import "./treatment.css"; // Import CSS file for styling
+import "./StyleHome/treatment.css"; // Import CSS file for styling
 
 
 const TreatmentComponent = () => {

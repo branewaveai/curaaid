@@ -27,8 +27,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import EnquiryForm from "../pages/EnquiryForm";
 import AboutDoctorCard from "../pages/aboutDoc/AboutDoctorCad";
-import EnquiryForm from "./EnquiryForm";
 
 dayjs.locale("en");
 const availableDates = [

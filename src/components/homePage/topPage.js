@@ -4,7 +4,7 @@ import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import styled from "styled-components";
 import CoverImage2 from "../../assets/icons/CoverImage2.svg";
 import coverImage1 from "../../assets/icons/coverImage1.png";
-import "./topPage.css";
+import "./StyleHome/topPage.css";
 const IconLink = styled.a`
   text-decoration: none;
   color: inherit;
