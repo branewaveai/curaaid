@@ -22,17 +22,15 @@ import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs from "dayjs";
 import "dayjs/locale/en";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import DetailedDoctorCard from "./DetailedDoctorCard";
+import AboutDoctorCard from "../pages/aboutDoc/AboutDoctorCad";
 import EnquiryForm from "./EnquiryForm";
 
 dayjs.locale("en");
-
-// Example available dates (replace with your actual available dates)
 const availableDates = [
   dayjs("2024-02-17"),
   dayjs("2024-02-18"),
@@ -61,6 +59,12 @@ const styles = {
   },
 };
 const AppointmentForm = () => {
+  const enquiryFormRef = useRef(null);
+
+  const handleEnquiryClick = () => {
+    
+    enquiryFormRef.current.scrollIntoView({ behavior: "smooth" });
+  };
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
@@ -163,7 +167,7 @@ const AppointmentForm = () => {
           marginTop: 50,
         }}
       >
-        <DetailedDoctorCard doctor={selectedDoctor} />
+        <AboutDoctorCard doctor={selectedDoctor} onEnquiryClick={handleEnquiryClick}  />
       </Paper>
 
       <Grid container spacing={4}>
@@ -281,13 +285,13 @@ const AppointmentForm = () => {
           </Grid>
         </Grid>
         <Grid item xs={8} sm={4}>
-          <div style={styles.formStyle}>
+          <div  style={styles.formStyle}>
             <EnquiryForm />
           </div>
         </Grid>
       </Grid>
 
-      <Typography variant="h5" gutterBottom my={2}>
+      <Typography ref={enquiryFormRef} variant="h5" gutterBottom my={2}>
         Appointment Form
       </Typography>
       <Paper

@@ -2,6 +2,7 @@ import { Container, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import DetailedDoctorCard from "../signup/DetailedDoctorCard";
 import Footer from "./footer";
+
 const DoctorListPage = ({ doctorList }) => {
   // State for search filters
   const [specialty, setSpecialty] = useState("");
@@ -33,40 +34,34 @@ const DoctorListPage = ({ doctorList }) => {
 
   return (
     <>
-    <div>
-    <Container style={{marginTop:'140px'}}>
-      <Typography variant="h5" align="center" gutterBottom>
-        
-      </Typography>
-      <Typography variant="h5" align="center" gutterBottom>
-        Doctor List
-      </Typography>
-      <Grid container spacing={2}>
-        
-        {filteredDoctorList.map((doctor, index) => (
-          <Grid key={index} item xs={12} sm={12} md={12} lg={12} xl={12}>
-            <DetailedDoctorCard doctor={doctor} />
-          </Grid>
-        ))}
-      </Grid>
-      {/* Pagination controls */}
       <div>
-        <button onClick={handlePrevPage} disabled={page === 1}>
-          
-          Previous
-        </button>
-        <span> {`Page ${page}`} </span>
-        <button
-          onClick={handleNextPage}
-          disabled={filteredDoctorList.length < itemsPerPage}
-        >
-          
-          Next
-        </button>
+        <Container style={{ marginTop: "140px" }}>
+          <Typography variant="h5" align="center" gutterBottom>
+          Best Doctors in India
+          </Typography>
+          <Grid container spacing={1}>
+            {filteredDoctorList.map((doctor, index) => (
+              <Grid key={index} item xs={12} sm={6}>
+                <DetailedDoctorCard doctor={doctor} />
+              </Grid>
+            ))}
+          </Grid>
+          {/* Pagination controls */}
+          <div>
+            <button onClick={handlePrevPage} disabled={page === 1}>
+              Previous
+            </button>
+            <span> {`Page ${page}`} </span>
+            <button
+              onClick={handleNextPage}
+              disabled={filteredDoctorList.length < itemsPerPage}
+            >
+              Next
+            </button>
+          </div>
+        </Container>
+        <Footer />
       </div>
-    </Container>
-    <Footer/>
-    </div>
     </>
   );
 };
