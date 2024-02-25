@@ -24,6 +24,23 @@ const Features = () => {
           health
         </span>
         <div className="service-container">
+        <div className="services">
+            <img src={ConsultationIcon} alt="Consultation Icon" />
+            <img style={{ marginBottom: "15px" }} src={Line_Icon} alt="" />
+            <div style={{ marginRight: "5px", height: "40px" }}>
+              <Typography variant="body2">
+                Pre-Arrival Video Consultation
+              </Typography>
+            </div>
+            <div style={{ height: "30px" }}>
+              <Typography
+                variant="body2"
+                style={{ fontSize: "12px", marginTop: "25px" }}
+              >
+                Easy airport transfers and hospital visit transportation.
+              </Typography>
+            </div>
+          </div>
           <div className="services">
             <img src={VisaIcon} alt="Visa Icon" />
             <img style={{ marginBottom: "15px" }} src={Line_Icon} alt="" />
@@ -74,23 +91,7 @@ const Features = () => {
               </Typography>
             </div>
           </div>
-          <div className="services">
-            <img src={ConsultationIcon} alt="Consultation Icon" />
-            <img style={{ marginBottom: "15px" }} src={Line_Icon} alt="" />
-            <div style={{ marginRight: "5px", height: "40px" }}>
-              <Typography variant="body2">
-                Pre-Arrival Video Consultation
-              </Typography>
-            </div>
-            <div style={{ height: "30px" }}>
-              <Typography
-                variant="body2"
-                style={{ fontSize: "12px", marginTop: "25px" }}
-              >
-                Easy airport transfers and hospital visit transportation.
-              </Typography>
-            </div>
-          </div>
+          
           <div className="services">
             <img src={CareIcon} alt="Care Icon" />
             <div style={{ marginRight: "5px", height: "40px" }}>
