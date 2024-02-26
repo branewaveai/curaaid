@@ -2,122 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import "../styles/hospiCard.css";
 import HospitalCard from "./hospitalCard";
 const HospitalList = ({ doctorsToShowPerPage }) => {
-
-  // const [hospitals, setHospitals] = useState([]);
   
-  // useEffect(() => {
-  //   //get hospitals from Api
-  //   const fetchhospitals = [
-  //     {
-  //       hospitalId: 1,
-  //       name: "Fortis Hospital ,Noida",
-  //       phoneNumber: "123-456-7890",
-  //       image:"https://www.healthtrip.com/wp-content/uploads/2018/02/fortis-noida-building-1.jpg",
-  //       estd: 1991,
-  //       location: "Noida",
-  //     },
-  //     {
-  //       hospitalId: 2,
-  //       name: "Fortis Hospital ,Noida",
-  //       phoneNumber: "123-456-7890",
-  //       image:
-  //         "https://www.healthtrip.com/wp-content/uploads/2018/02/fortis-noida-building-1.jpg",
-  //       estd: 1991,
-  //       location: "Bangalore",
-  //     },
-  //     {
-  //       hospitalId: 3,
-  //       name: "Fortis Hospital ,Noida",
-  //       phoneNumber: "123-456-7890",
-  //       image:
-  //         "https://www.healthtrip.com/wp-content/uploads/2018/02/fortis-noida-building-1.jpg",
-  //       estd: 1991,
-  //       location: "Bangalore",
-  //     },
-  //     {
-  //       hospitalId: 4,
-  //       name: "Fortis Hospital ,Noida",
-  //       phoneNumber: "123-456-7890",
-  //       image:
-  //         "https://www.healthtrip.com/wp-content/uploads/2018/02/fortis-noida-building-1.jpg",
-  //       estd: 1991,
-  //       location: "Bangalore",
-  //     },
-  //     {
-  //       hospitalId: 5,
-  //       name: "Fortis Hospital ,Noida",
-  //       phoneNumber: "123-456-7890",
-  //       image:
-  //         "https://www.healthtrip.com/wp-content/uploads/2018/02/fortis-noida-building-1.jpg",
-  //       estd: 1991,
-  //       location: "Bangalore",
-  //     },
-  //     {
-  //       hospitalId: 6,
-  //       name: "Fortis Hospital ,Noida",
-  //       phoneNumber: "123-456-7890",
-  //       image:
-  //         "https://www.healthtrip.com/wp-content/uploads/2018/02/fortis-noida-building-1.jpg",
-  //       estd: 1991,
-  //       location: "Bangalore",
-  //     },
-  //     {
-  //       hospitalId: 7,
-  //       name: "Fortis Hospital ,Noida",
-  //       phoneNumber: "123-456-7890",
-  //       image:
-  //         "https://www.healthtrip.com/wp-content/uploads/2018/02/fortis-noida-building-1.jpg",
-  //       estd: 1991,
-  //       location: "Bangalore",
-  //     },
-  //     {
-  //       hospitalId: 8,
-  //       name: "Fortis Hospital ,Noida",
-  //       phoneNumber: "123-456-7890",
-  //       image:
-  //         "https://www.healthtrip.com/wp-content/uploads/2018/02/fortis-noida-building-1.jpg",
-  //       estd: 1991,
-  //       location: "Bangalore",
-  //     },
-  //     {
-  //       hospitalId: 9,
-  //       name: "Fortis Hospital ,Noida",
-  //       phoneNumber: "123-456-7890",
-  //       image:
-  //         "https://www.healthtrip.com/wp-content/uploads/2018/02/fortis-noida-building-1.jpg",
-  //       estd: 1991,
-  //       location: "Bangalore",
-  //     },
-  //     {
-  //       hospitalId: 10,
-  //       name: "Fortis Hospital ,Noida",
-  //       phoneNumber: "123-456-7890",
-  //       image:
-  //         "https://www.healthtrip.com/wp-content/uploads/2018/02/fortis-noida-building-1.jpg",
-  //       estd: 1991,
-  //       location: "Bangalore",
-  //     },
-  //     {
-  //       hospitalId: 11,
-  //       name: "Fortis Hospital ,Noida",
-  //       phoneNumber: "123-456-7890",
-  //       image:
-  //         "https://www.healthtrip.com/wp-content/uploads/2018/02/fortis-noida-building-1.jpg",
-  //       estd: 1991,
-  //       location: "Bangalore",
-  //     },
-  //     {
-  //       hospitalId: 12,
-  //       name: "Fortis Hospital ,Noida",
-  //       phoneNumber: "123-456-7890",
-  //       image:
-  //         "https://www.healthtrip.com/wp-content/uploads/2018/02/fortis-noida-building-1.jpg",
-  //       estd: 1991,
-  //       location: "Bangalore",
-  //     }
-  //   ];
-  //   setHospitals(fetchhospitals);
-  // },[]);
   const hospitals = [
     {
       hospitalId: 1,
@@ -287,13 +172,14 @@ const HospitalList = ({ doctorsToShowPerPage }) => {
   };
 
   return (
-    <div className="containeer-list">
+    <div className="hospital-list">
       <div
         style={{
           display: "grid",
           gridTemplateColumns: `repeat(${columns}, 1fr)`,
-          gap: "10px",
-          justifyContent: "center",
+          gap: "20px",
+          margin:'auto auto'
+          // justifyContent: "center",
         }}
       >
         {currentHospitals.map((hospital) => (

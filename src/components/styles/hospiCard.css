@@ -5,46 +5,46 @@
     padding: 20px;
 }
 
-.hospi-card {
-    border-radius: 5px;
-    border: 2px solid #e5e5e5;
-    padding: 10px 15px;
-    margin-bottom: 30px;
-    position: relative;
+.hospital-card {
+    border-radius: 15px;
     background-color: white;
-    margin-right: 20px;
-    max-width: 200px;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    width: 100%;
+    height: 500px;
 }
 
-.hospi-card-image {
-    width: 100%;
-    height: fit-content;
+.hospital-card-image {
+    width: 300px;
+    height: 350px;
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 5px;
-    border: 1px solid #e5e5e5;
 }
 
-.hospi-image {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
+.hospital-image {
+    width: 280px;
+    height: 300px;
+    border-radius: 20px;
+    margin: 10px;
 }
 
 .containeer-list {
     display: flex;
-    /* overflow-x: auto; */
     padding: 0px;
 }
 
-.hospi-card-details {
+.hospital-card-details {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: start;
+    padding: 0px;
+}
+
+.hospital-list {
+    display: flex;
+    padding: 0px;
+    margin-bottom: 40px;
 }

@@ -8,22 +8,6 @@ body {
     /* background-color: #a8b8c8; */
 }
 
-
-/* .background {
-    position: absolute;
-    margin-top: 140px;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    width: 90%;
-    height: 100%;
-    z-index: -1;
-    
-    background-size: cover;
-    background-position: center;
-} */
-
 .background {
     position: absolute;
     left: 0;
@@ -96,25 +80,30 @@ body {
 
 .search-button {
     height: 40px;
-    /* Match input height */
     padding: 0 16px;
-    /* Adjust padding as needed */
     background-color: #367bf5;
-    /* Button background color */
     color: white;
-    /* Button text color */
     border: none;
     border-radius: 5px;
-    /* Add border radius */
     cursor: pointer;
     font-size: 16px;
-    /* Adjust font size as needed */
     margin-left: 8px;
-    /* Adjust margin as needed */
 }
 
 .search-button:hover {
     background-color: #2459bc;
+}
+
+.home-doctor {
+    background-color: #F3FDF7;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.home-hospital {
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 100px;
 }
 
 .green-line {
@@ -140,15 +129,10 @@ h2 {
     box-sizing: border-box;
 }
 
-
-/* Additional styles for Typography component */
-
 .Typography {
     font-family: "Roboto", sans-serif;
-    /* You can replace this with the desired font */
     font-size: 24px;
     color: #333;
-    /* Set color to a dark shade */
 }
 
 @media (min-width: 1200px) {

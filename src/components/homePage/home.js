@@ -58,26 +58,22 @@ const Home = () => {
       </Container>
       <Feature />
       <Treatment />
-      <div style={{ backgroundColor: "#F3FDF7",justifyContent:'center', margin:'0 auto' }}>
-        <div style={{width:'80%',margin:'0 auto' }}>
+      <div
+      className="home-doctor">
+        <div style={{ width: "80%", margin: "0 auto" }}>
           <Typography variant="h4"> Our Team of Expert Doctors </Typography>
           <DoctorList doctorsToShowPerPage={4} />
         </div>
       </div>
-      <div className="content-wrapper">
-        <Grid container spacing={1} style={{marginBottom:'100px'}}>
-          {/*<Grid item xs={12}>
-            <Typography variant="h4"> Our Team of Expert Doctors </Typography>
-            <DoctorList doctorsToShowPerPage={4} />
-          </Grid>*/}
-          <Grid item xs={12}>
-            <Typography variant="h4"> Our Hospitals </Typography>
-            <HospiList doctorsToShowPerPage={4} />
-          </Grid>
-        </Grid>
-        <Blogs />
-        <Testimonials />
+      <div className="home-hospital">
+        <div style={{ width: "80%", margin: "0 auto" }}>
+          <Typography variant="h4">  Our Team of Expert Doctors  </Typography>
+          <HospiList doctorsToShowPerPage={4} />
+        </div>
       </div>
+      
+      <Blogs />
+      <Testimonials />
       <Footer />
     </>
   );

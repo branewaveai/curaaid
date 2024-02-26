@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import DoctorCard from "../components/hospital/doctorCard";
-import "../components/styles/doctorCard.css"; // Make sure to import your CSS file
+import "../components/styles/doctorCard.css";
 
 const HorizontalScrollableDoctorList = ({ doctorsToShowPerPage }) => {
   const doctors = [
@@ -255,20 +255,21 @@ const HorizontalScrollableDoctorList = ({ doctorsToShowPerPage }) => {
   };
 
   return (
-    <div className="horizontal-scrollable-list">
+    <div className="doctor-list">
       <div
-        className="doctor-list-container"
+        
         style={{
           display: "grid",
           gridTemplateColumns: `repeat(${columns}, 1fr)`,
-          gap: "10px",
-          justifyContent: "center",
+          gap: "20px",
+          margin:'auto auto',
+          // justifyContent: "center",
         }}
       >
         {currentDoctors.map((doctor) => (
           <DoctorCard key={doctor.doctorId} {...doctor} />
-        ))}{" "}
-      </div>{" "}
+        ))}
+      </div>
      
     </div>
   );

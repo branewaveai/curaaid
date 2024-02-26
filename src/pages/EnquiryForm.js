@@ -56,7 +56,7 @@ const EnquiryForm = ({ hospitalId, onClose }) => {
             justifyContent="flex-start"
             alignItems="flex-start"
             my={2}
-            height="100vh" // Adjust the height as needed
+            height="100vh"
           >
             <Paper style={{ width: "100%", padding: "20px" }}>
               <Typography variant="h5" gutterBottom>

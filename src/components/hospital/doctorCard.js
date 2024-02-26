@@ -1,12 +1,6 @@
 // Import necessary dependencies
 import VideoCallIcon from "@mui/icons-material/VideoCall";
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Typography,
-} from "@mui/material";
+import { Button, CardActions, CardContent, Typography } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/doctorCard.css";
@@ -23,30 +17,25 @@ const DoctorCard = ({ doctorId, image, name, exp, degree, location }) => {
   };
 
   return (
-    <Card className="doctor-card" variant="outlined">
+    <div className="doctor-card">
       <div className="doctor-card-image">
         <img src={image} alt="Doctor" className="doctor-image" />
       </div>
       <CardContent className="doctor-card-details">
         <Typography variant="h6" component="div">
-          
           {name}
         </Typography>
         <Typography color="textSecondary" gutterBottom>
-          
           {exp}
           years of experience
         </Typography>
         <Typography variant="body2" component="div">
-          
           {degree}
         </Typography>
         <Typography variant="body2" color="textSecondary" component="div">
-          
           {location}
         </Typography>
       </CardContent>
-      {/* Actions (appointment button) */}
       <CardActions>
         <Button
           fullWidth
@@ -58,7 +47,7 @@ const DoctorCard = ({ doctorId, image, name, exp, degree, location }) => {
           Book Appointment
         </Button>
       </CardActions>
-    </Card>
+    </div>
   );
 };
 
